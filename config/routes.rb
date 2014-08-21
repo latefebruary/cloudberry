@@ -1,4 +1,9 @@
 Project::Application.routes.draw do
+
+  # mount RedactorRails::Engine => '/redactor_rails'
+  devise_for :admins
+  devise_for :users
+  get 'persons/profile', as: 'user_root'
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -12,8 +17,10 @@ Project::Application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  # Основной ресурс:
+    resources :articles do
+      resources :comments
+    end
 
   # Example resource route with options:
   #   resources :products do
