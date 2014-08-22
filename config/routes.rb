@@ -1,10 +1,15 @@
 Project::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # mount RedactorRails::Engine => '/redactor_rails'
-  devise_for :admins
+  # devise_for :admins
+
   devise_for :users
+
   get 'persons/profile', as: 'user_root'
   get "welcome/index"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,6 +5,8 @@ gem 'rails', '4.0.3'
 gem 'devise'
 gem 'pg'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 
