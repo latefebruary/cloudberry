@@ -10,8 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// turbolinks
+//= require_tree .
+//= require_self
+
+//= require redactor-rails
+
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
-= require redactor-rails
+//= require bootstrap-sprockets
+

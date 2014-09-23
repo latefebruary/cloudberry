@@ -1,0 +1,4 @@
+    /* Prevents slides from flashing */
+    #slides {
+      display:none;
+    }
