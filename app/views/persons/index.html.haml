@@ -1,0 +1,12 @@
+%section
+  .prof
+    %h1 Profile
+
+    = simple_form_for(@user, url: persons_update_path, html: { method: :put, class: "ordinary" }) do |f|
+      .form-inputs
+        = f.input :email, placeholder: "user@domain.com", required: true
+        = f.input :name, placeholder: "John Black"
+      .input-container
+        = link_to "Change your password", persons_password_path
+      .form-actions
+        = f.button :submit, "Update", class: "btn  btn-submit"

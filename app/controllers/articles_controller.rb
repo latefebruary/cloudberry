@@ -1,9 +1,11 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
   # http_basic_authenticate_with name: "kate", password: "secret", except: [:index, :show]
+  # autocomplete :category, :name
 
-	def new
-		@article = Article.new
+  def new
+    @article = Article.new
+    
 	end
 
 	def show

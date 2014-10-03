@@ -1,12 +1,11 @@
-.header
-  .row
+.header.row
+  .nicehead
     .logo
-      English club
+      %a{ :href => root_path } English club
 
     .auth
       - if user_signed_in?
-        %span Здравствуйте, 
-        = current_user.name
+        = link_to current_user.name, persons_path
         = link_to 'Выйти', destroy_user_session_path, :method => :delete
       - else
         = link_to 'Войти', new_user_session_path 

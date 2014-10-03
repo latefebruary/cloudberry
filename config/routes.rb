@@ -7,7 +7,11 @@ Project::Application.routes.draw do
 
   devise_for :users
 
-  get 'persons/profile', as: 'user_root'
+  get 'persons', to: 'persons#index'
+  put 'persons/update', to: 'persons#update'
+  get 'persons/password', to: 'persons#password'
+  put 'persons/password_update', to: 'persons#password_update'
+
   get "welcome/index"
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -26,6 +30,10 @@ Project::Application.routes.draw do
     resources :articles do
       resources :comments
     end
+
+    # resources :articles do
+    #   get :autocomplete_category_name, :on => :collection
+    # end
 
   # Example resource route with options:
   #   resources :products do

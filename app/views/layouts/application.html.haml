@@ -1,6 +1,9 @@
 !!!
 %html
   %head
+    %meta{ charset: "utf-8" }
+    %meta{ "http-equiv" => "X-UA-Compatible", content: "IE=Edge,chrome=1" }
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1" }
     %title English club
       
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
@@ -11,7 +14,7 @@
 
     = render 'layouts/header'
 
-    .main
+    %main.container
 
       %p.notice
       = notice
@@ -19,3 +22,5 @@
       /= alert
 
       = yield
+
+    = render 'layouts/footer'

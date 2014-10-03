@@ -1,0 +1,15 @@
+form.simple_form {
+
+  display: inline-block;
+
+  &.ordinary {
+    margin: auto;
+    .form-inputs {
+      width: 400px;
+    }
+    .form-actions {
+      margin-top: 25px;
+    }
+  }
+
+}

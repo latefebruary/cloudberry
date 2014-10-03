@@ -20,3 +20,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 
+// require jquery.validate.min.js
+// require autocomplete-rails

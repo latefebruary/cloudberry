@@ -1,16 +1,14 @@
-/ #slides.container.slidejs
-/  = image_tag 'slide-1.jpg'
-/  = image_tag 'slide-2.jpg'
-/  = image_tag 'slide-3.jpg'
-/  = image_tag 'slide-4.jpg'
+.row
+  / #slides.container.slidejs
+  /  = image_tag 'slide-1.jpg'
+  /  = image_tag 'slide-2.jpg'
+  /  = image_tag 'slide-3.jpg'
+  /  = image_tag 'slide-4.jpg'
 
-/  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
-/    %i.icon-chevron-left.icon-large
-/  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
-/    %i.icon-chevron-right.icon-large 
+  /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
+  /    %i.icon-chevron-left.icon-large
+  /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
+  /    %i.icon-chevron-right.icon-large 
 
-.zaglushka
-  = image_tag '8a8e.jpg'
-
-.articles_show
-  = link_to 'Материалы', controller: 'articles'
+  .lead= link_to 'Материалы', controller: 'articles'
+  .lead= link_to 'Создать статью', new_article_path
