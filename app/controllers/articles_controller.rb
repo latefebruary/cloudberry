@@ -5,32 +5,42 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @categories = Category.all
     
-	end
+  end
 
-	def show
-		@article = Article.find(params[:id])
-	end
+  def show
+    @article = Article.find(params[:id])
+    @categories = Category.all
+    binding.pry
+  end
 
-	def index
-		@articles = Article.all.where(is_published: true)
-	end
+  def index
+    @categories = Category.all
+    @articles = Article.all.where(is_published: true)
+  end
 
-	def create
-		@article = Article.new(article_params)
+  def create
 
-		if @article.save
-			redirect_to @article
-		else
-			render 'new'
-		end
-	end
+    @article = Article.new(article_params)
+    @article.categories = Category.find(params[:article][:category_ids].reject!(&:blank?))
+    
 
-	def edit
-		@article = Article.find(params[:id])
-	end
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
+  end
 
-	def update
+  def edit
+
+    @article = Article.find(params[:id])
+    @categories = Category.all
+  end
+
+  def update
+    @categories = Category.all
   	@article = Article.find(params[:id])
  
   	if @article.update(article_params)

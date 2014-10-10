@@ -1,4 +1,18 @@
-.row
+.news
+  .container
+    - if @articles.present?
+      - @articles.each do |r|
+        - if r.is_published == true
+          %a.postbox{ :href => article_path(r.id) }
+            .posttime= r.created_at.strftime("%H:%M")
+            .postlink
+              .posttitle= r.title
+              / .postanonce= r.anonce[0..20]
+
+
+          
+
+.row.container
   / #slides.container.slidejs
   /  = image_tag 'slide-1.jpg'
   /  = image_tag 'slide-2.jpg'
@@ -10,5 +24,14 @@
   /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
   /    %i.icon-chevron-right.icon-large 
 
-  .lead= link_to 'Материалы', controller: 'articles'
-  .lead= link_to 'Создать статью', new_article_path
+  .centerlink= link_to 'Создать статью', new_article_path
+    
+  .rightlink= link_to 'Все Материалы »', controller: 'articles'
+
+  .cubebox
+    -if @articles.present?
+      -@articles.each do |cube|
+        .cubelink
+          = cube.title
+          = cube.anonce
+

@@ -1,10 +1,9 @@
-.new-article
+.container.new-article
   %h2 Добавление материала
 
   .lightgrayline
 
-  .newarticleform
-    = render 'form'
+  = render 'form'
    
   .backlink
-    = link_to 'На список материалов', articles_path
+    %p= link_to 'На список материалов', articles_path

@@ -3,16 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .new-article {
-  margin: auto;
+  margin-bottom: 50px;;
   padding: 5px 20px;
   .lightgrayline {
     width: 850px;
     height: 2px;
     background: #EEEEEE;
+    margin-bottom: 25px;
   }
 }
 
-.newarticleform {
-  width: 850px;
-  padding: 5px;
+.catlist {
+  width: 200px;
+  height: 100%;
+  border: 0px;
+  background: #F3F2FE;
+}
+.backlink {
+  margin-top: 20px;
+  text-align: center;
+
 }

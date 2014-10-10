@@ -1,18 +1,24 @@
-.row
+.row.container
   .row-cont
     %p
-      %strong>Title:
-      = @article.title
+      %strong 
+      %h2= @article.title
      
     %p
-      %strong Text:
-      = @article.text
+      %strong
+      %h4= @article.text
+
+    %p
+      - if @article.categories.any?
+        %ul
+          - @article.categories.each do |c|
+            %li= c.name
      
-    %h2 Comments
-    = render @article.comments
+    / %p Comments
+    / = render @article.comments
      
-    %h2 Add a comment:
-    = render "comments/form"
+    / %p Add a comment:
+    / = render "comments/form"
      
-    = link_to 'Edit Article', edit_article_path(@article) |
-    = link_to 'Back to Articles', articles_path
+    = link_to 'Редактировать', edit_article_path(@article)
+    = link_to 'Все материалы', articles_path

@@ -10,21 +10,18 @@
         %li= msg
 
   %p
-    / .cell_1= f.label :title 
-    = f.input :title, :label => 'Название'
- 
+    = f.label 'Название'
+    = f.input :title, :label => false
   %p
-    / .cell_1= f.label :anonce
-    = f.input :anonce, :label => 'Анонс'
-
+    = f.label 'Анонс'
+    = f.input :anonce, :label => false
   %p
-    / .cell_1= f.label :text 
-    = f.input :text, :class => "redactor", :rows => 40, :cols => 120, :label => 'Описание'
-
-  %p.dropdown= f.association :categories
-    
-
-
-
+    = f.label 'Описание'  
+    = f.input_field :text, :class => "redactor", :rows => 40, :cols => 120
+    -# = f.input :text, label: 'Your label', :as => :text, :input_html => { :class => "redactor" }
   %p
-    = f.submit
+    .catlist
+      = f.association :categories,   as: :check_boxes
+      -# = f.category_ids = article[category_ids][]
+  %p        
+    = f.submit :class => 'btn btn-primary', :label => 'Создать'

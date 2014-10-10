@@ -16,7 +16,7 @@ body {
 
 .header {
   background: #F3F2EF;
-  height: 64px;
+  /* height: 64px; */
   }
 
 footer {
@@ -37,6 +37,45 @@ main.container {
   }
 }
 
+.news {
+  background: #F3F2EF;
+  padding-top: 15px;
+  padding-bottom: 12px;
+  height: 220px;
+  .postbox {
+    display: block;
+    width: 225px;
+    height: 60px;
+    float: right;
+    font-size: 15px;
+    .posttime {
+      float: left;
+      margin-right: 10px;
+      width: 30px;
+    }
+    .postlink {
+      float: left;
+      width: 170px;
+      .posttitle {
+        
+      }
+    }
+  }
+}
+
+.cubebox {
+  margin-bottom: 20px;
+  .cubelink {
+    border: 1px solid rgba(0,0,0, 0.08);
+    float: right;
+    width: 290px;
+    height: 210px;
+    padding: 10px;
+    margin-right: 12px;
+    margin-top: 12px;
+  }
+}
+
 .nicehead {
   position: relative;
   width: 1020px;
@@ -54,22 +93,41 @@ main.container {
     top:10px;
     right:0px;
   }
-}
-
-.dropdown {
-  width: 200px;
-  height: 42px;
-}
-
-.zaglushka {
-  margin: 0 auto;
-  text-align: center;
-  img {
-    width: 50%;
+  .categories {
+    font: 15px/20px "Bentham", sans-serif;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0, 0.08);
+    border-bottom: 1px solid rgba(0,0,0, 0.08);
+    ul {
+      text-align: center;
+      text-transform: uppercase;
+    }
+    li {
+      display: inline-block;
+      margin-right: 20px;
+    }
   }
 }
 
-.articles_show {
-  height: 300px;
-  padding: 20px;
+.rightlink {
+  text-align: right;
+  font-size: 12px/15px;
+}
+
+.centerlink {
+  text-align: center;
+  margin-top: 20px;
+  a {
+    font-size: 21px/20px;
+  }
+}
+
+.row-cont {
+  padding-top: 30px;
+}
+
+.redactor_box {
+  
 }

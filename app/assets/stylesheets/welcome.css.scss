@@ -2,3 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.news {
+  background: #F3F2EF;
+  padding-top: 15px;
+  padding-bottom: 12px;
+  height: 200px;
+  .postbox {
+    display: block;
+    width: 172px;
+    height: 60px;
+    .posttime {
+      float: left;
+      margin-right: 10px;
+    }
+    .postlink {
+      float: left;
+      .posttitle {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.cube {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
