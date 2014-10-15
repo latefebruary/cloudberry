@@ -1,12 +1,12 @@
-%p
-  %strong Commenter:
-  = comment.commenter
+.commentbox
+  .commentername
+    %strong= comment.commenter
 
-%p
-  %strong Comment:
-  = comment.body
+  .commenterbody
+    = comment.body
  
-%p
-  = link_to 'Destroy Comment', [comment.article, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' }
+- if admin_user_signed_in?
+  %p
+    = link_to 'Удалить комментарий', [comment.article, comment],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' }

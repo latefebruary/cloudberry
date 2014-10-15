@@ -17,11 +17,20 @@ ActiveAdmin.register Article do
   index do
     selectable_column
     id_column
-    column :email
-    column :current_sign_in_at
-    column :sign_in_count
+    column :title
     column :created_at
+    column :is_published
     actions
   end
 
+  member_action :single_approve do
+    Article.find(params[:id]).update(is_published: true)
+    redirect_to action: :index
+  end
+
+  action_item only: :show do
+   link_to 'Approve',                   
+              single_approve_admin_article_path(resource)   
+
+  end
 end

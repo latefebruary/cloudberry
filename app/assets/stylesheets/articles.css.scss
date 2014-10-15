@@ -21,8 +21,15 @@
     margin-right: 10px;
   }
 }
-.backlink {
-  margin-top: 20px;
+.lf {
+  margin-right: 10px;
   text-align: center;
+  font-weight: bold;
+  float: right;
+}
 
+.lightgrayline {
+  border-top: 1px solid rgba(0,0,0, 0.1);
+  margin-bottom: 12px;
+  margin-top: 12px;
 }

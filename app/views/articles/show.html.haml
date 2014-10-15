@@ -1,25 +1,34 @@
-.row.container
-  .row-cont
-    %p
-      %strong 
-      %h2= @article.title
-     
-    %p
-      %strong
-      %h4= @article.text
+.row
+  .container
+    .row-cont
+      %p
+        %h2= @article.title
+       
+      %p
+        %h4= @article.text.html_safe
 
-    %p
-      - if @article.categories.any?
-        %ul
-          - @article.categories.each do |c|
-            %li= c.name
-     
-    / %p Comments
-    / = render @article.comments
-     
-    / %p Add a comment:
-    / = render "comments/form"
-     
-    %p
-      = link_to 'Редактировать', edit_article_path(@article)
+      %p
+        - if @article.categories.any?
+          %ul
+            - @article.categories.each do |c|
+              %li= c.name
+       
+      %p
+        - if admin_user_signed_in?
+          .lf
+            = link_to @article, method: :delete, data: { confirm: 'Sure?' } do
+              %span Удалить
+          .lf= link_to 'Редактировать', edit_article_path(@article)
 
+    .lightgrayline
+    
+    %h3 Комментарии
+    / - if @artcile.comments.present?
+    = render @article.comments
+    / - else
+    /   No comments
+     
+    .lightgrayline
+    
+    %p Написать комментарий:
+    = render "comments/form"

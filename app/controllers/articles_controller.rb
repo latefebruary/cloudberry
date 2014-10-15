@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :authenticate_user!, except: [:show, :index, :destroy]
   # http_basic_authenticate_with name: "kate", password: "secret", except: [:index, :show]
   # autocomplete :category, :name
 
@@ -21,11 +21,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-
-    # binding.pry
     @article = Article.new(article_params)
     @article.categories = Category.find(params[:article][:category_ids].reject!(&:blank?))
-    
 
     if @article.save
       redirect_to @article
@@ -36,8 +33,9 @@ class ArticlesController < ApplicationController
 
   def edit
 
-    @article = Article.find(params[:id])
-    @categories = Category.all
+      @article = Article.find(params[:id])
+      @categories = Category.all
+
   end
 
   def update
@@ -53,10 +51,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
+    authenticate_user! unless admin_user_signed_in?
 	  @article = Article.find(params[:id])
 	  @article.destroy
 	 
-	  redirect_to articles_path
+	  redirect_to root_path, notice: 'Article was successfully destroyed!'
 	end
  
 private

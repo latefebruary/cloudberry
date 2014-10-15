@@ -33,7 +33,7 @@
       -@articles.order(created_at: :asc).each do |cube|
         .cubebox
           %a.cubelink{ :href => article_path(cube.id) }
-            %h3= cube.title
+            %h4= cube.title
           .cubelink
             = cube.anonce
 
