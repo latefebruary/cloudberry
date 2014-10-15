@@ -17,5 +17,8 @@
         %ul
           - @categories.each do |cat|
             %li
-              %a{ :href => article_path(r.id) }
-                = cat.name
+              .filtered
+                / %a{ :href => articles_path(cat) } 
+                = link_to articles_path(id: cat.id) do
+                  %span
+                    = cat.name

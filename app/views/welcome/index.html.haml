@@ -12,26 +12,28 @@
 
           
 
-.row.container
-  / #slides.container.slidejs
-  /  = image_tag 'slide-1.jpg'
-  /  = image_tag 'slide-2.jpg'
-  /  = image_tag 'slide-3.jpg'
-  /  = image_tag 'slide-4.jpg'
+.container
+  .wroom
+    / #slides.container.slidejs
+    /  = image_tag 'slide-1.jpg'
+    /  = image_tag 'slide-2.jpg'
+    /  = image_tag 'slide-3.jpg'
+    /  = image_tag 'slide-4.jpg'
 
-  /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
-  /    %i.icon-chevron-left.icon-large
-  /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
-  /    %i.icon-chevron-right.icon-large 
+    /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
+    /    %i.icon-chevron-left.icon-large
+    /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
+    /    %i.icon-chevron-right.icon-large 
 
-  .centerlink= link_to 'Создать статью', new_article_path
-    
-  .rightlink= link_to 'Все Материалы »', controller: 'articles'
+    %h3.centerlink= link_to 'Создать статью', new_article_path
+      
+    / .rightlink= link_to 'Все Материалы »', controller: 'articles'
 
-  .cubebox
     -if @articles.present?
-      -@articles.each do |cube|
-        .cubelink
-          = cube.title
-          = cube.anonce
+      -@articles.order(created_at: :asc).each do |cube|
+        .cubebox
+          %a.cubelink{ :href => article_path(cube.id) }
+            %h3= cube.title
+          .cubelink
+            = cube.anonce
 

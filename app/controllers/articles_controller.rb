@@ -12,16 +12,17 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @categories = Category.all
-    binding.pry
   end
 
   def index
-    @categories = Category.all
-    @articles = Article.all.where(is_published: true)
+    @category = Category.find(params[:id])
+    @articles = @category.articles.all
+    
   end
 
   def create
 
+    # binding.pry
     @article = Article.new(article_params)
     @article.categories = Category.find(params[:article][:category_ids].reject!(&:blank?))
     
@@ -40,8 +41,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @categories = Category.all
-  	@article = Article.find(params[:id])
+    @article = Article.find(params[:id])
+    # binding.pry
+    @article.categories = Category.find(params[:article][:category_ids].reject!(&:blank?))
  
   	if @article.update(article_params)
     	redirect_to @article

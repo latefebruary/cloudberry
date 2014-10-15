@@ -5,20 +5,21 @@
     .lead= link_to 'Создать статью', new_article_path
 
 
-  = if @articles.exists?
-    %table.table
-      %tr
-        %th Заголовок
-        %th Анонс
-        %th Содержание
-        %th Редактировать
-        %th Удалить
-      - @articles.each do |article|
-        %tr
-          %td= article.title
-          %td= article.anonce 
-          %td= link_to 'Show', article_path(article)
-          %td= link_to 'Edit', edit_article_path(article) if user_signed_in?
-          %td= link_to 'Destroy', article_path(article), :method => :delete, :data => { confirm: 'Are you sure?' } if user_signed_in?
-  - else
-    %p There are no articles
+  = if @articles.present?
+    - @articles.each do |article| 
+      - if article.is_published == true
+        %table.table
+          %tr
+            %th Заголовок
+            %th Анонс
+            %th Содержание
+            %th Редактировать
+            %th Удалить
+          %tr
+            %td= article.title
+            %td= article.anonce 
+            %td= link_to 'Show', article_path(article)
+            %td= link_to 'Edit', edit_article_path(article) if user_signed_in?
+            %td= link_to 'Destroy', article_path(article), :method => :delete, :data => { confirm: 'Are you sure?' } if user_signed_in?
+      - else
+        %p There are no articles

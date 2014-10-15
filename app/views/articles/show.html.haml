@@ -20,5 +20,6 @@
     / %p Add a comment:
     / = render "comments/form"
      
-    = link_to 'Редактировать', edit_article_path(@article)
-    = link_to 'Все материалы', articles_path
+    %p
+      = link_to 'Редактировать', edit_article_path(@article)
+
