@@ -5,8 +5,8 @@
   .commenterbody
     = comment.body
  
-- if admin_user_signed_in?
-  %p
-    = link_to 'Удалить комментарий', [comment.article, comment],
-                 method: :delete,
-                 data: { confirm: 'Are you sure?' }
+  - if admin_user_signed_in?
+    %p
+      = link_to 'Удалить комментарий', [comment.article, comment],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' }
