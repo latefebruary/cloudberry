@@ -5,6 +5,9 @@
 
     .auth
       - if user_signed_in?
+        - if admin_user_signed_in?
+          = link_to 'Adminka', admin_root_path
+          
         = link_to current_user.name, persons_path
         = link_to 'Выйти', destroy_user_session_path, :method => :delete
       - else
