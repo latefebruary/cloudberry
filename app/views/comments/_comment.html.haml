@@ -1,12 +1,12 @@
 .commentbox
   .commentername
     %strong= comment.commenter
+    %span= comment.created_at.strftime("%a, %e %b %Y %H:%M:%S")
 
   .commenterbody
     = comment.body
- 
-  - if admin_user_signed_in?
-    %p
-      = link_to 'Удалить комментарий', [comment.article, comment],
-                   method: :delete,
-                   data: { confirm: 'Are you sure?' }
+   
+- if admin_user_signed_in?
+  %p
+    = link_to article_comment_path(comment.article_id, comment), method: :delete, data: { confirm: 'Are you sure?' } do
+      %span Удалить

@@ -14,6 +14,7 @@ gem 'autoprefixer-rails'
 gem 'compass-rails', '~> 2.0.0'
 gem "haml-rails"
 gem 'simple_form'
+gem 'will_paginate', '~> 3.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

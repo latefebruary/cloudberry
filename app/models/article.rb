@@ -4,4 +4,5 @@ class Article < ActiveRecord::Base
   validates :text, presence: true
   validates :title, presence: true,
                     length: { minimum: 5 }
+  scope :published,               -> { where is_published: true }
 end

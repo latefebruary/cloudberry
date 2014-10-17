@@ -28,7 +28,6 @@
     %h3.centerlink= link_to 'Создать статью', new_article_path
       
     / .rightlink= link_to 'Все Материалы »', controller: 'articles'
-
     -if @articles.present?
       -@articles.order(created_at: :asc).each do |cube|
         .cubebox
@@ -37,3 +36,4 @@
           .cubelink
             = cube.anonce
 
+  .wpagination= will_paginate @articles

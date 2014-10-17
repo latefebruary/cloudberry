@@ -16,8 +16,7 @@ class ArticlesController < ApplicationController
 
   def index
     @category = Category.find(params[:id])
-    @articles = @category.articles.all
-    
+    @articles = @category.articles.published
   end
 
   def create

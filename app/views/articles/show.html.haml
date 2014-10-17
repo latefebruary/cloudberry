@@ -23,10 +23,12 @@
     .lightgrayline
     
     %h3 Комментарии
-    / - if @artcile.comments.present?
-    = render @article.comments
-    / - else
-    /   No comments
+
+    - if @article.comments.present?
+      / = render 'comments/comment'
+      = render @article.comments
+    - else
+      No comments
      
     .lightgrayline
     

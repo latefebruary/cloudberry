@@ -33,7 +33,6 @@ footer {
 main.container {
   width: 1020px;
   margin: auto;
-  background-color: aliceblue;
   .wroom {
     margin-bottom: 60px;
   }
@@ -110,6 +109,9 @@ main.container {
       display: inline-block;
       margin-right: 20px;
     }
+    .filtered {
+      background-color: rgba(0,0,0,0.1);
+    }
   }
 }
 
@@ -134,5 +136,15 @@ main.container {
 .commentbox {
   margin-bottom: 10px;
   padding: 5px;
-  background: #F3F2EF; 
+  background: #F3F2EF;
+  .commentername span {
+    margin-left: 7px;
+  }
+}
+
+.wpagination {
+  height: 80px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
