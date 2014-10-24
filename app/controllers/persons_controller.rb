@@ -1,6 +1,23 @@
 class PersonsController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create, :destroy]
 
-  before_action :authenticate_user!
+    
+  def subscribe
+    @category = Category.find(params[:category_id])
+
+    @user = current_user
+    # binding.pry
+    @user.categories << @category if !@user.categories.include? @category
+    redirect_to root_path, notice: 'Subscription was successfully saved!'
+
+  end
+
+  def unsubscribe
+    @user = current_user
+    @user.categories.clear
+    redirect_to persons_path, notice: 'You was successfully unsubscribed'
+  end
+
 
   def index
     @user = current_user
@@ -38,5 +55,9 @@ class PersonsController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
+
+  # def category_params
+  #   params.require(:category).permit(:id)
+  # end
 
 end

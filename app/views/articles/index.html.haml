@@ -4,16 +4,15 @@
   / = if user_signed_in?
   /   .lead= link_to 'Создать статью', new_article_path
 
-
   - if @articles.present?
-    - @articles.each do |article| 
-      %table.table
-        %tr
-          %th Заголовок
-          %th Анонс
-          %th Содержание
-          / %th Редактировать
-          / %th Удалить
+    %table.table
+      %tr
+        %th Заголовок
+        %th Анонс
+        %th Содержание
+        / %th Редактировать
+        / %th Удалить
+      - @articles.each do |article| 
         %tr
           %td= article.title
           %td= article.anonce 
@@ -21,4 +20,14 @@
           / %td= link_to 'Edit', edit_article_path(article) if user_signed_in?
           / %td= link_to 'Destroy', article_path(article), :method => :delete, :data => { confirm: 'Are you sure?' } if user_signed_in?
   - else
-    %p There are no articles
+    %p
+      В данной категории статей нет
+
+  .newssubscription
+    %p
+      .fineline
+        %h4 
+          Подписаться на новости
+          = @category.name
+    %p
+      = button_to 'Подписаться', { controller: 'persons', action: 'subscribe', category_id: @category.id }, class: 'btn btn-primary'

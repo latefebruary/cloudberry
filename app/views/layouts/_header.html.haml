@@ -1,7 +1,9 @@
 .header.row
   .nicehead
+    .upperbar
+
     .logo
-      %a{ :href => root_path } English club
+      %a{ :href => root_path } Kate's news site
 
     .auth
       - if user_signed_in?
@@ -10,6 +12,8 @@
           
         = link_to current_user.name, persons_path
         = link_to 'Выйти', destroy_user_session_path, :method => :delete
+        %p
+          = link_to 'Создать статью', new_article_path
       - else
         = link_to 'Войти', new_user_session_path 
         или 

@@ -11,6 +11,8 @@ Project::Application.routes.draw do
   put 'persons/update', to: 'persons#update'
   get 'persons/password', to: 'persons#password'
   put 'persons/password_update', to: 'persons#password_update'
+  post 'welcome/index', to: 'persons#subscribe'
+  post 'persons', to: 'persons#unsubscribe'
 
   get "welcome/index"
   

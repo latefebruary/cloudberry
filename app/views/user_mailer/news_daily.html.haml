@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+
+  %body
+    %h2 Your daily news for
+      = @category.name
+
+    %p
+      %h3 News
+
+      = @category.articles.all.each do |article|
+        = article.title
+        = article.anonce
+
+    qwe

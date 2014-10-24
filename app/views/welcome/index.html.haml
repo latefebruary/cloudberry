@@ -24,8 +24,9 @@
     /    %i.icon-chevron-left.icon-large
     /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
     /    %i.icon-chevron-right.icon-large 
+    
 
-    %h3.centerlink= link_to 'Создать статью', new_article_path
+    / %h3.centerlink= link_to 'Создать статью', new_article_path
       
     / .rightlink= link_to 'Все Материалы »', controller: 'articles'
     -if @articles.present?
@@ -36,4 +37,4 @@
           .cubelink
             = cube.anonce
 
-  .wpagination= will_paginate @articles
+    .wpagination= will_paginate @articles

@@ -3,13 +3,15 @@
     .row-cont
       %p
         %h2= @article.title
+      %p
+        = image_tag @article.image
        
       %p
         %h4= @article.text.html_safe
 
       %p
         - if @article.categories.any?
-          %ul
+          %ul.inline
             - @article.categories.each do |c|
               %li= c.name
        

@@ -10,3 +10,12 @@
         = link_to "Change your password", persons_password_path
       .form-actions
         = f.button :submit, "Update", class: "btn  btn-submit"
+
+    %h2 Manage your subs
+    
+    - if @user.categories.present?
+      = @user.categories.all.each do |c|
+        c.name
+    %p
+      Отписаться от всех рассылок
+      = button_to 'Отписаться', { action: 'unsubscribe' }, class: 'btn'

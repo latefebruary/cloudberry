@@ -1,3 +1,5 @@
+$font-family-sans-serif: Helvetica, sans-serif;
+
 html {
   position: relative;
 }
@@ -11,6 +13,9 @@ body {
   a:hover {
     color: #FC6540;
     text-decoration: none;
+  }
+  .btn {
+    font-family: $font-family-sans-serif;
   }
 }
 
@@ -35,6 +40,7 @@ main.container {
   margin: auto;
   .wroom {
     margin-bottom: 60px;
+    margin-top: 20px;
   }
 }
 
@@ -81,6 +87,10 @@ main.container {
   position: relative;
   width: 1020px;
   margin: auto;
+  .upperbar {
+    height: 20px;
+    background: darkcyan;
+  }
   .logo {
     text-align: center;
     font-size: 32px;
@@ -91,7 +101,7 @@ main.container {
   }
   .auth {
     position: absolute;
-    top:10px;
+    top:35px;
     right:0px;
   }
   .categories {
@@ -110,7 +120,11 @@ main.container {
       margin-right: 20px;
     }
     .filtered {
-      background-color: rgba(0,0,0,0.1);
+      background-color: rgba(0,0,0,0);
+      a:hover {
+        color: #000;
+        text-decoration: underline;
+      }
     }
   }
 }
