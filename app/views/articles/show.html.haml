@@ -1,12 +1,12 @@
 .row
   .container
     .row-cont
-      %p
-        %h2= @article.title
-      %p
+      
+      %h2= @article.title
+      
+      .articlebody
         = image_tag @article.image
        
-      %p
         %h4= @article.text.html_safe
 
       %p
@@ -22,17 +22,18 @@
               %span Удалить
           .lf= link_to 'Редактировать', edit_article_path(@article)
 
-    .lightgrayline
-    
-    %h3 Комментарии
+    .comments
+      / .lightgrayline
+      
+      %h3 Комментарии
 
-    - if @article.comments.present?
-      / = render 'comments/comment'
-      = render @article.comments
-    - else
-      No comments
-     
-    .lightgrayline
-    
-    %p Написать комментарий:
-    = render "comments/form"
+      - if @article.comments.present?
+        / = render 'comments/comment'
+        = render @article.comments
+      - else
+        No comments
+       
+      .lightgrayline
+      
+      %p Написать комментарий:
+      = render "comments/form"

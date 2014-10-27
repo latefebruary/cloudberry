@@ -14,7 +14,7 @@ Category.create id: 5, name: 'Tech'
 Category.create id: 6, name: 'World'
 Category.create id: 7, name: 'Business'
 
-User.create id: 10, name: 'Oliver Twist', email: 'test+user@mkechinov.ru', encrypted_password: '12345678'
+User.create id: 10, name: 'Oliver Twist', email: 'katya@mkechinov.ru', encrypted_password: '12345678'
 User.create id: 11, name: 'Admin', email: 'test+admin@mkechinov.ru', encrypted_password: '12345678'
 
 Article.create id: 99, title: 'Wisbech: the end of the road for migrant workers', anonce: 'Most of Wisbech’s 10,000 migrant workers have travelled from eastern Europe with dreams of earning a better living', text: 'Vera, 56, says she doesn’t know who she lives with or the name of the person she pays her rent to. She is unable to produce her passport or payslips. She is uneasy at being questioned, either very confused or very unwilling to reveal any information; she sits on her bed with her head in her hands.
