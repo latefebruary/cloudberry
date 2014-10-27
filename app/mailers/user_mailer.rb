@@ -7,11 +7,11 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
 
-  # def news_daily(category, user)
-  #   @user = user
-  #   @category = category
-  #   @url  = 'http://localhost:3000'
-  #   mail(to: @user.email, subject: 'News weekly')
-  # end
+  def article_was_approved(article_id)
+    @url  = 'http://localhost:3000'
+    @article = Article.find(article_id)
+    @user = @article.user
+    mail(to: @user.email, subject: 'Congratulations! Your article was approved')
+  end
 
 end

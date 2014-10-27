@@ -1,17 +1,8 @@
 .news
-  .container
-    - if @articles.present?
-      - @articles.each do |r|
-        - if r.is_published == true
-          %a.postbox{ :href => article_path(r.id) }
-            .posttime= r.created_at.strftime("%H:%M")
-            .postlink
-              .posttitle= r.title
-              / .postanonce= r.anonce[0..20]
+  = render 'head'
 
 
-          
-
+      
 .container
   .wroom
     / #slides.container.slidejs
@@ -30,11 +21,13 @@
       
     / .rightlink= link_to 'Все Материалы »', controller: 'articles'
     -if @articles.present?
-      -@articles.order(created_at: :asc).each do |cube|
+      -@articles.order(created_at: :asc).each do |article|
         .cubebox
-          %a.cubelink{ :href => article_path(cube.id) }
-            %h4= cube.title
+          .cubeimg
+            = image_tag article.image
+          %a.cubelink{ :href => article_path(article.id) }
+            %h4= article.title
           .cubelink
-            = cube.anonce
+            = article.anonce
 
     .wpagination= will_paginate @articles

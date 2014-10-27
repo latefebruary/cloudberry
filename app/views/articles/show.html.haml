@@ -9,11 +9,14 @@
        
         %h4= @article.text.html_safe
 
-      %p
-        - if @article.categories.any?
-          %ul.inline
-            - @article.categories.each do |c|
-              %li= c.name
+      
+      - if @article.categories.any?
+        %ul.inline
+          - @article.categories.each do |c|
+            %li 
+              = link_to articles_path(id: c.id) do
+                %span 
+                  = c.name
        
       %p
         - if admin_user_signed_in?

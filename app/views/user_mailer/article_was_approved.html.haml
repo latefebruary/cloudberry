@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+
+  %body
+    Congratulations, 
+    = @user.name
+    your article was approved, you can see it by this link:
+    = link_to article_path(id: @article.id) do
+      %span 
+        = @article.title

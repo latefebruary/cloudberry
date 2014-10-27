@@ -1,0 +1,8 @@
+.container
+  - if @articles.published.present?
+    - @articles.order(created_at: :asc).last(8).each do |r|
+      %a.postbox{ :href => article_path(r.id) }
+        .posttime= r.created_at.strftime("%H:%M")
+        .postlink
+          .posttitle= r.title
+          / .postanonce= r.anonce[0..20]

@@ -24,7 +24,9 @@ ActiveAdmin.register Article do
   end
 
   member_action :single_approve do
-    Article.find(params[:id]).update(is_published: true)
+    a = Article.find(params[:id])
+    a.update(is_published: true)
+    UserMailer.article_was_approved(a.id).deliver
     redirect_to action: :index
   end
 
