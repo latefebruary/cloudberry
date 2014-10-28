@@ -4,11 +4,14 @@
     %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
 
   %body
-    %h1 Welcome to English club, 
-      = @user.name
+    Добро пожаловать на новостной портал Kate's, 
+    = @user.name
     %p
-      You have successfully signed up to English club,
-      your username is: 
-      = @user.name
+      Вы успешно зарегистрировались на сайте 
+      = link_to 'English club', @url
 
-    
+    %p
+      Если Вы хотите отписаться от рассылки, нажмите  
+      / = link_to 'Отписаться', { controller: 'persons', action: 'unsubscribe_user_actions', user_token: @user.user_token }
+      = url_for 'click', controller: 'persons', action: 'unsubscribe_user_actions', user_token: @user.user_token, only_path: false, host: 'http://localhost:3000'
+      

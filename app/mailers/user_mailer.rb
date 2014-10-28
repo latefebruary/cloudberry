@@ -8,10 +8,15 @@ class UserMailer < ActionMailer::Base
   end
 
   def article_was_approved(article_id)
-    @url  = 'http://localhost:3000'
     @article = Article.find(article_id)
     @user = @article.user
-    mail(to: @user.email, subject: 'Congratulations! Your article was approved')
+    mail(to: @user.email, subject: 'Your article was approved') if @user.mail_notifyers == true
+  end
+
+  def article_was_declined(article_id)
+    @article = Article.find(article_id)
+    @user = @article.user
+    mail(to: @user.email, subject: 'Your article was declined') if @user.mail_notifyers == true
   end
 
 end

@@ -35,4 +35,16 @@ ActiveAdmin.register Article do
               single_approve_admin_article_path(resource)   
 
   end
+
+  member_action :single_decline do
+    a = Article.find(params[:id])
+    UserMailer.article_was_declined(a.id).deliver
+    redirect_to action: :index
+  end
+
+  action_item only: :show do
+   link_to 'Decline',                   
+              single_decline_admin_article_path(resource)   
+
+  end
 end

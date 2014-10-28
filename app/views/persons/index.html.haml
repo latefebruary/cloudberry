@@ -14,8 +14,12 @@
     %h2 Manage your subs
     
     - if @user.categories.present?
-      = @user.categories.all.each do |c|
-        c.name
+      Вы подписаны на следующие категории:
+      %p
+        = @user.categories.all.each do |category|
+          %span= category.name
+
     %p
-      Отписаться от всех рассылок
-      = button_to 'Отписаться', { action: 'unsubscribe' }, class: 'btn'
+      %h4
+        Отписаться от всех рассылок
+        = button_to 'Отписаться', { action: 'unsubscribe' }, class: 'btn'

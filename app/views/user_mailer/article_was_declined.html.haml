@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+
+  %body
+    Здравствуйте, 
+    = @user.name
+    ваша статья 
+    = link_to article_path(id: @article.id) do
+      %span 
+        = @article.title
+    отклонена. Вы можете попробовать написать новую.
+
+    Чтобы отписаться от рассылки, нажмите
+    = link_to 'Отписаться', { controller: 'persons', action: 'unsubscribe_user_actions', user_token: @user.user_token }
+      
