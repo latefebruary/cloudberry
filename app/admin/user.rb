@@ -20,6 +20,7 @@ ActiveAdmin.register User do
     column :name
     column :created_at
     column :email
+    column :mail_notifyers
     actions
   end
 

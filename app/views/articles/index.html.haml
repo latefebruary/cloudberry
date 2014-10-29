@@ -24,10 +24,11 @@
       В данной категории статей нет
 
   .newssubscription
-    %p
-      .fineline
-        %h4 
-          Подписаться на новости
-          = @category.name
-    %p
-      = button_to 'Подписаться', { controller: 'persons', action: 'subscribe', category_id: @category.id }, class: 'btn btn-primary'
+    .lightgrayline
+    .fineline
+      
+      %h4
+        Подписаться на новости
+        = @category.name
+      
+      = button_to 'Подписаться', { controller: 'persons', action: 'subscribe', category_id: @category.id }, class: 'podpisatca'

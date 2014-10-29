@@ -1,5 +1,5 @@
 class PersonsController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create, :destroy, :unsubscribe_user_actions, :unsubscribe]
+  before_action :authenticate_user!, except: [:new, :create, :destroy, :unsubscribe_notifications, :unsubscribe]
 
 # Подписка на новости выбранной категории
 # Можно подписываться хоть на все категории, не жалко
@@ -7,7 +7,6 @@ class PersonsController < ApplicationController
     @category = Category.find(params[:category_id])
 
     @user = current_user
-    # binding.pry
     @user.categories << @category if !@user.categories.include? @category
     redirect_to root_path, notice: 'Subscription was successfully saved!'
 
@@ -27,12 +26,19 @@ class PersonsController < ApplicationController
   end
 
 # Отписка от уведомлений о публикации, отклонении статей для незалогиненного юзера из письма
-  def unsubscribe_user_actions
-    User.find_by_user_token(params[:user_token]).update_attributes(:mail_notifyers => false)
-    
+  def unsubscribe_notifications
+    # binding.pry
+    @user = User.find_by_user_token(params[:user_token])
+    @user.update_attributes(:mail_notifyers => false)
     redirect_to root_path, notice: 'Подписка успешно отменена!'
+    # flash.now[:alert] = 'Не работает :('
   end
 
+  def subscribe_notifications
+    @user = current_user
+    @user.update_attributes(:mail_notifyers => true)
+
+  end
 
   def index
     @categories = Category.all
@@ -69,7 +75,7 @@ class PersonsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :user_token)
   end
 
 end

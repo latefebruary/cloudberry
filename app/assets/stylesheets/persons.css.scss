@@ -2,8 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.prof {
+.profile {
   width: auto;
   height: auto;
-  
+  padding: 10px 25px;
+  h2 {
+    text-align: center
+  }
+}
+
+.subscribtion_profile {
+  margin-top:30px;
+  height: 270px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 3px;
+  ul {
+    padding: 0px 5px;
+    li {
+      display: inline-block;
+    }
+  }
+  span {
+    float: right;
+    margin-left: 50px;
+  }
+}
+
+.otpisca {
+  padding: 2px 15px;
+  color: #399C72;
 }

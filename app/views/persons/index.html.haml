@@ -1,6 +1,7 @@
 %section.container
-  .prof
-    %h1 Profile
+  .profile
+    %h2 
+      Профиль 
 
     = simple_form_for(@user, url: persons_update_path, html: { method: :put, class: "ordinary" }) do |f|
       .form-inputs
@@ -9,17 +10,24 @@
       .input-container
         = link_to "Change your password", persons_password_path
       .form-actions
-        = f.button :submit, "Update", class: "btn  btn-submit"
+        = f.button :submit, "Сохранить", class: "btn btn-submit"
 
-    %h2 Manage your subs
-    
-    - if @user.categories.present?
-      Вы подписаны на следующие категории:
+    .subscribtion_profile
+      %h2
+        Управление подписками
+
+      - if @user.categories.present?
+        Вы подписаны на следующие категории:
+        %ul
+          - @user.categories.each do |category|
+            %li
+              %strong= category.name
+              %span= link_to 'Отписаться', { action: 'unsubscribe' }
+      / %p
+      /   %h4
+      /     Отписаться от новостных рассылок
+      /     = button_to 'Отписаться', { action: 'unsubscribe' }, class: 'btn'
       %p
-        = @user.categories.all.each do |category|
-          %span= category.name
-
-    %p
-      %h4
-        Отписаться от всех рассылок
-        = button_to 'Отписаться', { action: 'unsubscribe' }, class: 'btn'
+        %h4
+          Получать уведомления по почте
+          = button_to 'Подписаться', { action: 'subscribe_notifications' }, class: 'btn btn-primary'
