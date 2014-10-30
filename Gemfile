@@ -25,7 +25,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -55,6 +55,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'jazz_hands'
   gem 'pry'
+  gem "rspec-rails"
 end
 
 # Use ActiveModel has_secure_password
@@ -62,10 +63,10 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'unicorn-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem "rspec-rails", :group => [:development, :test]
