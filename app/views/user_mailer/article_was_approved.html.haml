@@ -12,5 +12,4 @@
         = @article.title
 
     Чтобы отписаться от рассылки, нажмите
-    = link_to 'Отписаться', { controller: 'persons', action: 'unsubscribe_notifications', user_token: @user.user_token }
-      
+    = link_to 'Отписаться', welcome_index_url( controller: 'persons', action: 'unsubscribe_notifications', user_token: @user.user_token, host: 'http://localhost:3000' )

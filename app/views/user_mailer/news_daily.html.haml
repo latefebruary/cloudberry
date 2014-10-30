@@ -14,4 +14,5 @@
         = article.title
         = article.anonce
 
-    qwe
+    Чтобы отписаться от рассылки, нажмите
+    = link_to 'Отписаться', welcome_index_url( controller: 'persons', action: 'unsubscribe', user_token: @user.user_token, host: 'http://localhost:3000' )

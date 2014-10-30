@@ -5,10 +5,15 @@
 
     = simple_form_for(@user, url: persons_update_path, html: { method: :put, class: "ordinary" }) do |f|
       .form-inputs
-        = f.input :email, placeholder: "user@domain.com", required: true
-        = f.input :name, placeholder: "John Black"
-      .input-container
-        = link_to "Change your password", persons_password_path
+        = f.label 'Ваш емейл'
+        = f.input :email, placeholder: "user@domain.com", required: true, label: false
+        = f.label 'Ваше имя'
+        = f.input :name, placeholder: "John Black", label: false
+      .checkbox
+        = f.input :mail_notifyers, label: 'Получать уведомления по почте', as: :boolean
+        / = f.input :mail_notifyers, type: "checkbox", checked_value: true, unchecked_value: false, label: false
+      / .input-container
+      = link_to "Изменить пароль", persons_password_path
       .form-actions
         = f.button :submit, "Сохранить", class: "btn btn-submit"
 
@@ -17,17 +22,12 @@
         Управление подписками
 
       - if @user.categories.present?
-        Вы подписаны на следующие категории:
-        %ul
-          - @user.categories.each do |category|
-            %li
-              %strong= category.name
-              %span= link_to 'Отписаться', { action: 'unsubscribe' }
-      / %p
-      /   %h4
-      /     Отписаться от новостных рассылок
-      /     = button_to 'Отписаться', { action: 'unsubscribe' }, class: 'btn'
-      %p
-        %h4
-          Получать уведомления по почте
-          = button_to 'Подписаться', { action: 'subscribe_notifications' }, class: 'btn btn-primary'
+        %p
+          Вы подписаны на следующие категории:
+        %p
+          %ul
+            - @user.categories.each do |category|
+              %li
+                %strong= category.name
+        %p
+          = button_to 'Отписаться от всех', persons_path, action: 'unsubscribe', class: 'btn btn-submit'

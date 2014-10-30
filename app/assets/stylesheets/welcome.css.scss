@@ -6,25 +6,45 @@
   background: #F3F2EF;
   padding-top: 15px;
   padding-bottom: 12px;
-  height: 200px;
+  height: 220px;
   .postbox {
     display: block;
-    width: 172px;
+    width: 225px;
     height: 60px;
+    float: right;
+    font-size: 15px;
+    margin-bottom: 30px;
     .posttime {
       float: left;
       margin-right: 10px;
+      width: 30px;
     }
     .postlink {
       float: left;
+      width: 170px;
       .posttitle {
-        font-weight: bold;
+        
       }
     }
   }
 }
 
-.cube {
-  margin-top: 100px;
+main {
+  font-family: Adelle, sans-serif;
+}
+
+.cubebox {
   margin-bottom: 100px;
+  border: 1px solid rgba(0,0,0, 0.08);
+  float: left;
+  width: 318px;
+  padding: 10px;
+  margin-right: 12px;
+  margin-top: 12px;
+  .cubelink {
+    font-size: 16px;
+  }
+  img {
+    width: 100%;
+  }
 }

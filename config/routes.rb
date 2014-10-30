@@ -16,7 +16,7 @@ Project::Application.routes.draw do
 
   # get "welcome/index"
 
-  get 'persons', to: 'persons#subscribe_notifications'
+  post 'persons', to: 'persons#subscribe_notifications'
   get 'welcome/index', to: 'persons#unsubscribe_notifications'
   
   # The priority is based upon order of creation: first created -> highest priority.

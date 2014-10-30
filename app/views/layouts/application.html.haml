@@ -16,10 +16,11 @@
 
     %main
 
-      .notice
-        = notice
+      / .notice
+      /   = notice
       /%p.alert
       /= alert
+      %center= render partial: "layouts/flash_messages", flash: flash
 
       = yield
 

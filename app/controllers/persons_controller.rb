@@ -5,11 +5,16 @@ class PersonsController < ApplicationController
 # Можно подписываться хоть на все категории, не жалко
   def subscribe
     @category = Category.find(params[:category_id])
-
     @user = current_user
     @user.categories << @category if !@user.categories.include? @category
-    redirect_to root_path, notice: 'Subscription was successfully saved!'
+    redirect_to root_path, notice: 'Подписка на новости оформлена!'
+  end
 
+# Подписку на уведомления на почте можно вернуть в профиле
+  def subscribe_notifications
+    @user = current_user
+    @user.update_attributes(:mail_notifyers => true)
+    redirect_to persons_path, notice: 'Уведомления включены!'
   end
 
 # Отписка от новостной рассылки для залогиненного и незалогиненного юзера
@@ -31,13 +36,6 @@ class PersonsController < ApplicationController
     @user = User.find_by_user_token(params[:user_token])
     @user.update_attributes(:mail_notifyers => false)
     redirect_to root_path, notice: 'Подписка успешно отменена!'
-    # flash.now[:alert] = 'Не работает :('
-  end
-
-  def subscribe_notifications
-    @user = current_user
-    @user.update_attributes(:mail_notifyers => true)
-
   end
 
   def index
@@ -75,7 +73,7 @@ class PersonsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :user_token)
+    params.require(:user).permit(:name, :email, :password, :user_token, :mail_notifyers)
   end
 
 end
