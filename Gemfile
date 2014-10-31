@@ -51,13 +51,13 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'letter_opener'
   gem 'quiet_assets'
   gem 'jazz_hands'
   gem 'pry'
   gem "rspec-rails"
 end
 
+gem 'letter_opener'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
