@@ -31,12 +31,14 @@
       %h3 Комментарии
 
       - if @article.comments.present?
-        / = render 'comments/comment'
         = render @article.comments
+
+        / = render 'comments/comment'
+
       - else
         No comments
        
       .lightgrayline
       
       %p Написать комментарий:
-      = render "comments/form"
+      = render "comments/form", parent_id: nil

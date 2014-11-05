@@ -5,6 +5,7 @@ ruby '2.1.1'
 gem 'rails', '4.0.3'
 gem 'devise'
 gem 'pg'
+gem 'ancestry'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
@@ -58,6 +59,7 @@ group :development, :test do
 end
 
 gem 'letter_opener'
+gem 'postmark-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

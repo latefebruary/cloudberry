@@ -13,6 +13,7 @@
 // turbolinks
 //= require_tree .
 //= require_self
+//= require comments
 
 //= require redactor-rails
 
@@ -22,3 +23,17 @@
 
 // require jquery.validate.min.js
 // require autocomplete-rails
+
+$(document).ready(
+              function(){
+  $(".answer").click(function () {
+    $('.answerform').css({ display:"block" });
+    $('.answer').css({ display:"none" });
+    $('.hideanswer').css({ display:"block" });
+    });
+  $(".hideanswer").click(function () {
+    $('.answerform').css({ display:"none" });
+    $('.answer').css({ display:"block" });
+    $('.hideanswer').css({ display:"none" });
+    });
+  });

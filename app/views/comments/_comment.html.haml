@@ -3,10 +3,21 @@
     %strong= comment.commenter
     %span= comment.created_at.strftime("%a, %e %b %Y %H:%M:%S")
 
-  .commenterbody
-    = comment.body
-   
-- if admin_user_signed_in?
-  %p
-    = link_to article_comment_path(comment.article_id, comment), method: :delete, data: { confirm: 'Are you sure?' } do
-      %span Удалить
+    .commentbody
+      = comment.body
+
+    .commentanswer
+      - if admin_user_signed_in?
+        = link_to article_comment_path(@article.id, comment), method: :delete, data: { confirm: 'Are you sure?' } do
+          %span Удалить
+     
+      %a.answer
+        Ответить
+      %a.hideanswer
+        Скрыть
+      .answerform
+        = render 'comments/form', parent_id: comment.id
+
+  - if comment.children.present?
+    .nextcomment
+      = render comment.children

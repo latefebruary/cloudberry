@@ -7,6 +7,7 @@ Project::Application.routes.draw do
 
   devise_for :users
 
+  post 'persons', to: 'persons#create'
   get 'persons', to: 'persons#index'
   put 'persons/update', to: 'persons#update'
   get 'persons/password', to: 'persons#password'
@@ -36,6 +37,10 @@ Project::Application.routes.draw do
       resources :comments
     end
 
+    resources :comments do
+      resources :comments
+    end
+    
     # resources :users do
 
     #   post :subscribe

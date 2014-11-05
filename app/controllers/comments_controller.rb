@@ -3,16 +3,27 @@ class CommentsController < ApplicationController
   # http_basic_authenticate_with name: "kate", password: "secret", only: :destroy
 
   def create
-    # binding.pry
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+
+    if params[:comment][:parent_id].present?
+      @comment = @article.comments.find(params[:comment][:parent_id]).children.create(comment_params)
+      @comment.article_id = @article.id
+      @comment.save
+    else
+      @comment = @article.comments.create(comment_params)
+    end
+
     redirect_to article_path(@article)
+
   end
  
   def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
+    # binding.pry
+    
+    @comment = Comment.find(params[:id])
     @comment.destroy
+    
+    @article = Article.find(params[:article_id])
     redirect_to article_path(@article)
   end
 
