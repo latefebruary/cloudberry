@@ -1,5 +1,5 @@
 class NewsMailer < ActionMailer::Base
-  default from: 'no-reply@example.com'
+  default from: 'test@mkechinov.ru'
  
   def news_daily(user, category_id)
     @user = user
