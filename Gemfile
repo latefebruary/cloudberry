@@ -5,6 +5,7 @@ ruby '2.1.1'
 gem 'rails', '4.0.3'
 gem 'devise'
 gem 'pg'
+gem 'redis-rails'
 gem 'ancestry'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -45,6 +46,8 @@ gem "mini_magick"
 # Cron-job scheduler
 gem 'whenever', :require => false
 gem 'sidekiq'
+# gem 'sidekiq-client-cli' #to run sidekiq with whenever
+# gem 'sidekiq-middleware' #handle locks
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

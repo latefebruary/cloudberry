@@ -107,6 +107,11 @@ main.container {
   }
 }
 
+.lightgrayline {
+  border-top: 1px solid rgba(0,0,0, 0.1);
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
 
 .wpagination {
   height: 80px;

@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+
+  %body
+
+    %h3
+      Ежедневная рассылка новостей 
+      = @category.name
+
+    %p
+
+    - @category.articles.all.each do |article|
+      .lightgrayline
+      
+      %p
+        = article.title
+      %p
+        = article.anonce
+      %p
+        = link_to 'read', article_url(article)
+
+
+    %p
+      Чтобы отписаться от рассылки, нажмите
+      = link_to 'Отписаться', welcome_index_url( controller: 'persons', action: 'unsubscribe', user_token: @user.user_token )

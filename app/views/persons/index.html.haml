@@ -31,3 +31,7 @@
                 %strong= category.name
         %p
           = button_to 'Отписаться от всех', persons_path, action: 'unsubscribe', class: 'btn btn-submit'
+       
+        / - if admin_user_signed_in?
+        /   %p
+        /     = button_to 'Send me daily news now', persons_path, controller: 'persons', action: 'send_daily_now', class: 'btn'
