@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   def self.send_daily_news
     User.find_each do |user|
       user.categories.split(',').each do |category|
-        NewsMailer.delay.news_daily(user, category.id)
+        NewsMailer.delay.news_daily(user, category)
       end
     end
   end
