@@ -33,6 +33,7 @@ Project::Application.configure do
   #   location: '/usr/sbin/sendmail',
   #   arguments: '-i -t'
   # }
+  ENV["REDISTOGO_URL"] = 'redis://localhost:6789' 
   
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
