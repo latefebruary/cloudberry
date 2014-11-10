@@ -5,7 +5,7 @@ Project::Application.routes.draw do
   # mount RedactorRails::Engine => '/redactor_rails'
   # devise_for :admins
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   post 'persons', to: 'persons#create'
   get 'persons', to: 'persons#index'

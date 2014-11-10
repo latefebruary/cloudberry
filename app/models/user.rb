@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, 
          :omniauthable, :omniauth_providers => [:facebook]
@@ -11,7 +9,7 @@ class User < ActiveRecord::Base
   scope :created_before, ->(time) { where("created_at < ?", time) }
   scope :created_after, ->(time) { where("created_at > ?", time) }
   
-  before_save :get_authentication_token
+  before_save :assign_authentication_token
   after_create { UserMailer.welcome_email(self).deliver }
 
 
@@ -23,7 +21,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def get_authentication_token
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
+  def assign_authentication_token
     if user_token.blank?
       self.user_token = generate_authentication_token
     end
