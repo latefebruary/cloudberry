@@ -23,9 +23,9 @@
 # set :path, Rails.root
 # set :output, Rails.root.join('log', 'cron.log')
 
-# every 1.day, :at => '10:25 pm' do
-#   runner "User.send_daily_news"
-# end
+every 1.day, :at => '4:00 pm' do
+  runner "User.send_daily_news"
+end
 
 # every 1.day, :at => '9:25 pm' do
 #   runner "User.send_daily_news"

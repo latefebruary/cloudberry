@@ -13,8 +13,8 @@ module Project
     # -- all .rb files in that directory are automatically loaded.
     
     # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-    config.action_mailer.delivery_method   = :postmark
-    config.action_mailer.postmark_settings = { :api_key => ENV['POSTMARK_API_KEY'] }
+    # config.action_mailer.delivery_method   = :postmark
+    # config.action_mailer.postmark_settings = { :api_key => ENV['POSTMARK_API_KEY'] }
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

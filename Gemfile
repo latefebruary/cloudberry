@@ -6,6 +6,7 @@ gem 'rails', '4.0.3'
 gem 'devise'
 gem 'pg'
 gem 'redis-rails'
+# gem 'redis'
 gem 'ancestry'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -27,7 +28,10 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+  gem 'postmark-rails'
+end 
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -44,7 +48,6 @@ gem "carrierwave"
 gem "mini_magick"
 
 # Cron-job scheduler
-gem 'whenever', :require => false
 gem 'sidekiq'
 # gem 'sidekiq-client-cli' #to run sidekiq with whenever
 # gem 'sidekiq-middleware' #handle locks
@@ -55,14 +58,14 @@ group :doc do
 end
 
 group :development, :test do
+  gem 'whenever', :require => false
   gem 'quiet_assets'
   gem 'jazz_hands'
   gem 'pry'
   gem "rspec-rails"
+  gem 'letter_opener'
 end
 
-gem 'letter_opener'
-gem 'postmark-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

@@ -5,7 +5,7 @@ class NewsMailer < ActionMailer::Base
     @user = user
     @category = Category.find(category_id)
     # @url  = 'http://localhost:3000'
-    mail(to: @user.email, subject: 'News weekly').deliver
+    mail(to: @user.email, subject: 'News weekly')
   end
 
 

@@ -352,6 +352,7 @@ DEPENDENCIES
   rails3-jquery-autocomplete
   rails_12factor
   redactor-rails
+  redis
   redis-rails
   rspec-rails
   sass-rails (~> 4.0.0)
