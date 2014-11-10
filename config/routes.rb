@@ -6,6 +6,9 @@ Project::Application.routes.draw do
   # devise_for :admins
 
   devise_for :users
+  devise_scope :user do
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
 
   post 'persons', to: 'persons#create'
   get 'persons', to: 'persons#index'

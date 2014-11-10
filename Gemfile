@@ -8,6 +8,7 @@ gem 'pg'
 gem 'redis-rails'
 # gem 'redis'
 gem 'ancestry'
+gem 'omniauth-facebook'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
