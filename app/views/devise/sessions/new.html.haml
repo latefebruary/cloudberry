@@ -1,0 +1,55 @@
+:javascript
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '270986573025814',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+.container
+
+  = notice
+
+  .login-block
+    .login-head
+      .h3 
+        Вход
+
+    .login-form
+      .form-group
+        = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-group', :role => 'form') do |f|
+          .form-horizontal
+            = f.label :email 
+            = f.input :email, :autofocus => true, :label => false
+          .form-horizontal
+            = f.label :password 
+            = f.input :password, :label => false
+
+          - if devise_mapping.rememberable? 
+            .form-horizontal
+              = f.check_box :remember_me 
+              = f.label :remember_me 
+          .form-horizontal
+            = f.submit "Войти", class: 'btn btn-primary'
+
+      = render "devise/shared/links"
+
+    .social-auth
+      %hr
+        .span
+          или Вы можете
+      .h4
+        Войти через соц.сети
+      - resource_class.omniauth_providers.each do |provider|
+        .knut
+          = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'fb-auth-btn'
