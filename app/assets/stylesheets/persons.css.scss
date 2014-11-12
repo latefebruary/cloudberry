@@ -15,6 +15,32 @@
   }
   
   .login-form {
+    text-align: center;
+    label {
+      text-align: right;
+      padding-right: 0px;
+      padding-top: 8px;
+    }
+
+    .checkbox {
+      text-align: left;
+      label {
+        padding-top: 3px;
+      }
+    }
+
+    .extramargin {
+      padding-bottom: 10px;
+    }
+
+    .jjj {
+      margin-bottom: 10px;
+    }
+  }
+
+  .signupandforgotpass {
+    text-align: center;
+    
   }
 
   .social-auth {
@@ -22,22 +48,28 @@
     text-align: center;
     hr {
       width: 100%;
+      margin: auto;
     }
     a {
-      font: bold 12px/48px "ProximaNova", sans-serif;
+      font: bold 12px/42px "ProximaNova", sans-serif;
       color: #fff;
     }
     a:hover {
       text-decoration: none;
       color: #fff;
     }
-    .fb-auth-btn {
-    }
-    .knut {
+
+    .fb-auth-btn, .tw-auth-btn {
       border-radius: 3px;
       width: 140px;
-      height: 46px;
+      height: 42px;
       background: #4169bc;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+    .tw-auth-btn {
+      background: #1caeea;
+
     }
   }
 }
