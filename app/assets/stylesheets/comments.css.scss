@@ -1,6 +1,3 @@
-// Place all the styles related to the Comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .commentername {
   background-color: rgba(0,0,0,0.03);
   .commentbody {
@@ -38,6 +35,7 @@
   padding-top: 10px;
 }
 
-.nextcomment {
+.nested_comments {
   padding-left: 20px;
 }
+

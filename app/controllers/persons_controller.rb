@@ -38,14 +38,7 @@ class PersonsController < ApplicationController
     redirect_to root_path, notice: 'Подписка успешно отменена!'
   end
 
-# Временный метод
-  # def send_daily_now
-  #   @user = current_user
-  #   @user.send_daily_news
-  # end
-
   def index
-    @categories = Category.all
     @user = current_user
   end
 

@@ -18,6 +18,3 @@
       .answerform
         = render 'comments/form', parent_id: comment.id
 
-  - if comment.children.present?
-    .nextcomment
-      = render comment.children

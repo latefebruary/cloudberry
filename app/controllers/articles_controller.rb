@@ -1,28 +1,21 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :destroy]
-  # http_basic_authenticate_with name: "kate", password: "secret", except: [:index, :show]
 
   def new
     @article = Article.new
-    @categories = Category.all
-    
   end
 
   def show
     @article = Article.find(params[:id])
-    @categories = Category.all
   end
 
   def index
-    @categories = Category.all
     @category = Category.find(params[:id])
     @articles = @category.articles.published
   end
 
   def create
-    @categories = Category.all
     @article = Article.new(article_params)
-    # binding.pry
     @article.user_id = current_user.id
     @article.categories = Category.find(params[:article][:category_ids].reject!(&:blank?))
 
@@ -34,10 +27,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-
       @article = Article.find(params[:id])
-      @categories = Category.all
-
   end
 
   def update

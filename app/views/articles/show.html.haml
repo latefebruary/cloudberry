@@ -35,8 +35,8 @@
       %h3 Комментарии
 
       - if @article.comments.present?
-        = render @article.comments
-
+        / = render @article.comments
+        = nested_comments @article.comments.arrange
         / = render 'comments/comment'
 
       - else

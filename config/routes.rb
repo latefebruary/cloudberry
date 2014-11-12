@@ -8,7 +8,7 @@ Project::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   post 'persons', to: 'persons#create'
-  get 'persons', to: 'persons#index'
+  get 'profile', to: 'persons#index'
   put 'persons/update', to: 'persons#update'
   get 'persons/password', to: 'persons#password'
   put 'persons/password_update', to: 'persons#password_update'
