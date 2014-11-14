@@ -67,6 +67,11 @@ main.container {
     position: absolute;
     top:14px;
     right:0px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: small;
+    a {
+      margin-right: 3px;
+    }
   }
   .categories {
     /*font: 15px/20px "Bentham", sans-serif;*/
