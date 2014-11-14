@@ -1,4 +1,4 @@
-Englisg club
+Kate's news site
 =========
 
-Interesting articles for english learners
+News articles site

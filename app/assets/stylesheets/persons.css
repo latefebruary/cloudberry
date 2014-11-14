@@ -1,7 +1,7 @@
 .login-block{
   margin: 7% auto;
-  width: 390px;
-  padding: 0px 8px;
+  width: 300px;
+  padding: 0px 20px 10px;
   box-shadow: 0 3px 3px rgba(0,0,0,0.5);
   background: #F3F2EF;
 
@@ -20,34 +20,40 @@
 
     .checkbox {
       text-align: left;
+      margin: 0;
       label {
         padding-top: 3px;
+      }
+      input {
+        margin-left: -15px;
       }
     }
 
     .extramargin {
-      padding-bottom: 10px;
-    }
-
-    .jjj {
-      margin-bottom: 10px;
+      padding: 15px;
+      .btn {
+        width: 120px;
+      }
     }
   }
 
   .signupandforgotpass {
     text-align: center;
-    padding-bottom: 10px;
+    color: grey;
   }
 
   .social-auth {
-    padding: 20px 5px;
-    text-align: center;
+    padding: 20px 0px;
     hr {
       width: 100%;
       margin: auto;
     }
+    .h4 {
+      text-align: center;
+      font-size: 16px;
+    }
     a {
-      font: bold 12px/42px "ProximaNova", sans-serif;
+      font: 12px/36px "ProximaNova", sans-serif;
       color: #fff;
     }
     a:hover {
@@ -55,17 +61,20 @@
       color: #fff;
     }
 
-    .fb-auth-btn, .tw-auth-btn {
-      border-radius: 3px;
-      width: 140px;
-      height: 42px;
-      background: #4169bc;
+    .auth-btn {
+      border-radius: 4px;
+      width: 120px;
+      height: 34px;
       display: inline-block;
       text-transform: uppercase;
+      text-align: center;
     }
-    .tw-auth-btn {
+    .tw {
       background: #1caeea;
-
+      margin-left: 16px;
+    }
+    .fb {
+      background: #4169bc;
     }
   }
 }

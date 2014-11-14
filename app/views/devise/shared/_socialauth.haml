@@ -1,9 +1,10 @@
-%hr
+.social-auth
 
-.h4
-  Войти через соц.сети
-- resource_class.omniauth_providers.each do |provider|
-  .fb-auth-btn
-    = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
-  .tw-auth-btn
-    = link_to "Twitter", omniauth_authorize_path(resource_name, provider)
+
+  .h4
+    или
+  - resource_class.omniauth_providers.each do |provider|
+    .fb.auth-btn
+      = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+    .tw.auth-btn
+      = link_to "Twitter", omniauth_authorize_path(resource_name, provider)
