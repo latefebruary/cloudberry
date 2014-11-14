@@ -1,33 +1,14 @@
-.news
-  = render 'head'
+= render 'head'
 
+.wc-cont
+  -if @articles.present?
+    -@articles.order(created_at: :asc).each do |article|
+      .cubebox
+        .cubeimg
+          = image_tag article.image
+        %a.cubelink{ :href => article_path(article.id) }
+          %h4= article.title
+        .cubelink
+          = article.anonce
 
-      
-.container
-  .wroom
-    / #slides.container.slidejs
-    /  = image_tag 'slide-1.jpg'
-    /  = image_tag 'slide-2.jpg'
-    /  = image_tag 'slide-3.jpg'
-    /  = image_tag 'slide-4.jpg'
-
-    /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
-    /    %i.icon-chevron-left.icon-large
-    /  %a.slidesjs-next.slidesjs-navigation{:href => "#"}
-    /    %i.icon-chevron-right.icon-large 
-    
-
-    / %h3.centerlink= link_to 'Создать статью', new_article_path
-      
-    / .rightlink= link_to 'Все Материалы »', controller: 'articles'
-    -if @articles.present?
-      -@articles.order(created_at: :asc).each do |article|
-        .cubebox
-          .cubeimg
-            = image_tag article.image
-          %a.cubelink{ :href => article_path(article.id) }
-            %h4= article.title
-          .cubelink
-            = article.anonce
-
-    .wpagination= will_paginate @articles
+  .wpagination= will_paginate @articles

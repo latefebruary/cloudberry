@@ -1,23 +1,21 @@
 .header.row
   .nicehead
-    .upperbar
-
     .logo
       %a{ :href => root_path } Kate's news site
 
     .auth
       - if user_signed_in?
         - if admin_user_signed_in?
-          = link_to 'Adminka', admin_root_path
+          = link_to 'Admin panel', admin_root_path
           
         = link_to current_user.name, persons_path
-        = link_to 'Выйти', destroy_user_session_path, :method => :delete
+        = link_to 'Exit', destroy_user_session_path, :method => :delete
         %p
-          = link_to 'Создать статью', new_article_path
+          = link_to 'Add article', new_article_path
       - else
-        = link_to 'Войти', new_user_session_path 
-        или 
-        = link_to 'Зарегистрироваться', new_user_registration_path
+        = link_to 'Sign in', new_user_session_path 
+        |
+        = link_to 'Sign up', new_user_registration_path
 
     .categories
       - if @categories.present?

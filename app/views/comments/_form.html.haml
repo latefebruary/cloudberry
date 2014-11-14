@@ -1,14 +1,13 @@
-= simple_form_for([@article, @article.comments.build]) do |f|
+= simple_form_for([@article, @article.comments.build], :class => 'form-horizontal', :role => 'form') do |f|
   = f.input :parent_id, as: :hidden, input_html: { value: parent_id.presence || nil }
 
-  %p
-    = f.label 'Ваше имя'
+  - if !user_signed_in?
+    .form-group
+      / = f.label 'Ваше имя', class: "col-sm-3"
+      = f.input :commenter, :label => false, placeholder: 'Ваше имя', class: 'form-control'
+  
+  .form-group
+    = f.input :body, label: false, placeholder: 'Ваш комментарий', class: 'form-control'
 
-    = f.input :commenter, :label => false
-  %p
-    = f.label 'Ваш комментарий'
-
-    = f.input :body, :label => false
-
-  %p
-    = f.submit :class => 'btn btn-primary', :label => 'Создать'
+  .form-group
+    = f.submit :class => 'btn btn-default', :label => 'Создать'

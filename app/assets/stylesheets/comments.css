@@ -1,0 +1,56 @@
+.invisible {
+  display: none;
+}
+
+.comments {
+  background: #F3F2EF;
+  max-width: 920px;
+  padding: 1px 15px;
+  font-size: 12px;
+  margin: 0 auto;
+}
+.commentbox {
+  margin-bottom: 10px;
+  padding: 5px;
+  background: #F3F2EF;
+}
+
+.commentername {
+  background-color: rgba(0,0,0,0.03);
+  span {
+    margin-left: 7px;
+  }
+}
+
+.commentbody {
+  margin: 7px 0px;
+}
+
+.commentanswer {
+  a {
+    color: darkgrey;
+  }
+}
+  
+.answer, .hideanswer {
+  cursor: pointer;
+  a:hover {
+    color: #FC6540;
+  }
+}
+
+.answerform, .hideanswer {
+  //display: none;
+}
+
+.answerform {
+  padding-top: 10px;
+}
+
+.nested_comments {
+  padding-left: 20px;
+}
+
+.answerblock {
+  padding: 10px;
+}

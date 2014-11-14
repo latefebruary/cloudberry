@@ -12,9 +12,12 @@ class CommentsController < ApplicationController
     else
       @comment = @article.comments.create(comment_params)
     end
+    if user_signed_in?
+      @comment.commenter = current_user.name
+      @comment.save
+    end
 
     redirect_to article_path(@article)
-
   end
  
   def destroy

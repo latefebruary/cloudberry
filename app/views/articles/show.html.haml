@@ -5,9 +5,9 @@
       %h2= @article.title
       
       .articlebody
-        = image_tag @article.image
+        %center= image_tag @article.image
        
-        %h4= @article.text.html_safe
+        = @article.text.html_safe
 
       
       - if @article.categories.any?
@@ -30,19 +30,16 @@
   
 
     .comments
-      / .lightgrayline
-      
-      %h3 Комментарии
+      %h3 Комментарии      
+      .lightgrayline
 
       - if @article.comments.present?
-        / = render @article.comments
         = nested_comments @article.comments.arrange
-        / = render 'comments/comment'
 
       - else
-        No comments
+        Пока никто ничего не написал. Вы можете быть первым!
        
       .lightgrayline
-      
-      %p Написать комментарий:
-      = render "comments/form", parent_id: nil
+      .answerblock
+        %p Написать комментарий:
+        = render "comments/form", parent_id: nil
