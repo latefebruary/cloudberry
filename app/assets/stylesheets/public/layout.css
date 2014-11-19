@@ -29,8 +29,9 @@ body {
 footer {
   height: 100px;
   background: #F3F2EF;
-  .row {
-    margin-top: 10px;
+  .wc-cont {
+    margin-top: 20px;
+    padding-top: 10px;
     .social a {
       margin-right: 5px;
     }

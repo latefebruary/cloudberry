@@ -1,9 +1,8 @@
 class NewsMailer < ActionMailer::Base
   default from: 'no-reply@example.com'
  
-  def news_daily(user, category_id)
+  def news_daily(user)
     @user = user
-    @category = Category.find(category_id)
     mail(to: @user.email, subject: 'News weekly').deliver
   end
 

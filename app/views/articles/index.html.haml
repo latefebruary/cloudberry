@@ -1,8 +1,7 @@
-.row.container
-  %h3 Список материалов пользователей
-
-  / = if user_signed_in?
-  /   .lead= link_to 'Создать статью', new_article_path
+.row-cont
+  %h3
+    Статьи в категории 
+    = @category.name
 
   - if @articles.present?
     %table.table
@@ -10,25 +9,20 @@
         %th Заголовок
         %th Анонс
         %th Содержание
-        / %th Редактировать
-        / %th Удалить
       - @articles.each do |article| 
         %tr
           %td= article.title
           %td= article.anonce 
           %td= link_to 'Show', article_path(article)
-          / %td= link_to 'Edit', edit_article_path(article) if user_signed_in?
-          / %td= link_to 'Destroy', article_path(article), :method => :delete, :data => { confirm: 'Are you sure?' } if user_signed_in?
   - else
     %p
       В данной категории статей нет
 
-  .newssubscription
-    .lightgrayline
-    .fineline
+  .subscribe-index
+    - if current_user.subscriptions.find_by_category_id(@category.id.to_s).blank?
       
       %h4
         Подписаться на новости
         = @category.name
       
-      = button_to 'Подписаться', { controller: 'persons', action: 'subscribe', category_id: @category.id }, class: 'podpisatca'
+      = button_to 'Подписаться', subscriptions_path(id: @category.id), class: 'podpisatca'

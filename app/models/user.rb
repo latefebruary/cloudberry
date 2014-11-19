@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, 
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_and_belongs_to_many :categories
+  # has_and_belongs_to_many :categories
   has_many :articles
+  has_many :subscriptions, dependent: :destroy
 
   scope :created_before, ->(time) { where("created_at < ?", time) }
   scope :created_after, ->(time) { where("created_at > ?", time) }
@@ -15,8 +16,8 @@ class User < ActiveRecord::Base
 
   def self.send_daily_news
     User.find_each do |user|
-      user.categories.split(',').each do |category|
-        NewsMailer.delay.news_daily(user, category)
+      if user.subscriptions.present?
+        NewsMailer.delay.news_daily(user)
       end
     end
   end

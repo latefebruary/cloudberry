@@ -110,10 +110,11 @@
     margin-left: 50px;
   }
 }
-
-.otpisca {
-  padding: 2px 15px;
-  color: #399C72;
+.usersubslist {
+  max-width: 300px;
+}
+.unsubbtn {
+  margin-top: -18px;
 }
 
 .checkbox {

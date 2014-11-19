@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index, :destroy]
+  before_action :authenticate_user!, except: [:show, :index, :destroy]
 
   def new
     @article = Article.new

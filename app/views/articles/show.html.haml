@@ -1,45 +1,37 @@
-.row
-  .container
-    .row-cont
-      
-      %h2= @article.title
-      
-      .articlebody
-        %center= image_tag @article.image
-       
-        = @article.text.html_safe
-
-      
-      - if @article.categories.any?
-        %ul.inline
-          - @article.categories.each do |c|
-            %li 
-              = link_to articles_path(id: c.id) do
-                %span 
-                  = c.name
-       
-      %p
-        - if admin_user_signed_in?
-          .lf
-            = link_to @article, method: :delete, data: { confirm: 'Sure?' } do
-              %span Удалить
-          .lf= link_to 'Редактировать', edit_article_path(@article)
-
-      %p
-        .fb-like{ 'data-share' => "true", 'data-width' => "450", 'data-show-faces' => "true" }
+.row-cont
   
+  %h2= @article.title
+  
+  .articlebody
+    %center= image_tag @article.image
+    = @article.text.html_safe
+  
+  - if @article.categories.any?
+    %ul.inline
+      - @article.categories.each do |c|
+        %li 
+          = link_to articles_path(id: c.id) do
+            %span 
+              = c.name
+   
+  - if admin_user_signed_in?
+    .editlink
+      = link_to @article, method: :delete, data: { confirm: 'Sure?' } do
+        %span Удалить
+    .editlink= link_to 'Редактировать', edit_article_path(@article)
 
-    .comments
-      %h3 Комментарии      
-      .lightgrayline
+  .fb-like{ 'data-share' => "true", 'data-width' => "450", 'data-show-faces' => "true" }
 
-      - if @article.comments.present?
-        = nested_comments @article.comments.arrange
+.comments
+  %h3 Комментарии      
+  .lightgrayline
 
-      - else
-        Пока никто ничего не написал. Вы можете быть первым!
-       
-      .lightgrayline
-      .answerblock
-        %p Написать комментарий:
-        = render "comments/form", parent_id: nil
+  - if @article.comments.present?
+    = nested_comments @article.comments.arrange
+
+  - else
+    Пока никто ничего не написал. Вы можете быть первым!
+   
+  .lightgrayline
+  .answerblock
+    = render "comments/form", parent_id: nil

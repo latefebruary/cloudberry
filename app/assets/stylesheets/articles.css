@@ -1,55 +1,3 @@
-.new-article {
-  margin-bottom: 50px;;
-  padding: 5px 20px;
-  .lightgrayline {
-    width: 850px;
-    height: 2px;
-    background: #EEEEEE;
-    margin-bottom: 25px;
-  }
-}
-
-.catlist {
-  height: 100%;
-  margin-top: 20px;
-  .checkbox {
-    margin-right: 10px;
-  }
-}
-.lf {
-  margin-right: 10px;
-  text-align: center;
-  font-weight: bold;
-  float: right;
-}
-
-.lightgrayline {
-  border-top: 1px solid rgba(0,0,0, 0.1);
-  margin-bottom: 12px;
-  margin-top: 12px;
-}
-
-.newssubscription {
-  border-top: 1px solid rgba(0,0,0, 0.1);
-  padding-top: 50px;
-  padding-bottom: 30px;
-  .fineline {
-    height: 100px;
-    padding-left: 12px;
-    padding-top: 1px;
-  }
-}
-
-.articlebody {
-  text-align: justify;
-  margin-bottom: 20px;
-  img {
-    margin-bottom: 20px;
-    max-width: 800px;
-    max-height: 400px;
-  }
-}
-
 .row-cont {
   margin: 0 auto;
   max-width: 920px;
@@ -69,5 +17,41 @@
     a {
       color: #FC6540;
     }
+  }
+}
+
+.lightgrayline {
+  border-top: 1px solid rgba(0,0,0, 0.1);
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+/*----------Article Index----------*/
+
+.subscribe-index {
+  border-top: 1px solid rgba(0,0,0, 0.1);
+  padding-top: 50px;
+  padding-bottom: 30px;
+  .fineline {
+    height: 100px;
+    padding-left: 12px;
+    padding-top: 1px;
+  }
+}
+
+/*----------Article Show----------*/
+
+.editlink {
+  margin-right: 10px;
+  float: right;
+}
+
+.articlebody {
+  text-align: justify;
+  margin-bottom: 20px;
+  img {
+    margin-bottom: 20px;
+    max-width: 800px;
+    max-height: 400px;
   }
 }

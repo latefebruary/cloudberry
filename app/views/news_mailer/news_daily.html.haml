@@ -6,22 +6,21 @@
   %body
 
     %h3
-      Ежедневная рассылка новостей 
-      = @category.name
+      Новое за неделю 
 
     %p
-
-    - @category.articles.all.each do |article|
-      .lightgrayline
-      
-      %p
-        = article.title
-      %p
-        = article.anonce
-      %p
-        = link_to 'read', article_url(article)
+    - @user.subscriptions.each do |sub|
+      - Category.find(sub.category_id).articles.each do |article|
+        .lightgrayline
+        
+        %p
+          = article.title
+        %p
+          = article.anonce
+        %p
+          = link_to 'read', article_url(article)
 
 
     %p
       Чтобы отписаться от рассылки, нажмите
-      = link_to 'Отписаться', welcome_index_url( controller: 'persons', action: 'unsubscribe', user_token: @user.user_token )
+      = link_to 'Отписаться', unsubscribe_url( user_token: @user.user_token )

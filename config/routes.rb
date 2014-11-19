@@ -8,18 +8,22 @@ Project::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   post 'persons', to: 'persons#create'
-  get 'profile', to: 'persons#index'
+  get 'persons', to: 'persons#index'
   put 'persons/update', to: 'persons#update'
   get 'persons/password', to: 'persons#password'
   put 'persons/password_update', to: 'persons#password_update'
-  post 'welcome/index', to: 'persons#subscribe'
-  post 'persons', to: 'persons#unsubscribe'
 
-  # get "welcome/index"
+  get 'unsubscribe', to: 'subscriptions#unsubscribe'
+  # post 'unsubscribe', to: 'subscriptions#unsubscribe'
 
   post 'persons', to: 'persons#subscribe_notifications'
   get 'welcome/index', to: 'persons#unsubscribe_notifications'
   
+  # post 'welcome/index', to: 'persons#subscribe'
+  # post 'persons', to: 'persons#unsubscribe'
+
+  # get "welcome/index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -41,10 +45,13 @@ Project::Application.routes.draw do
       resources :comments
     end
     
-    # resources :users do
+
+
+    resources :subscriptions, only: [:create, :destroy]
 
     #   post :subscribe
-    #   post :unsubscribe
+     # get :unsubscribe
+      
     #   collection do
     #     patch :unsubscribe_notifications
     #   end

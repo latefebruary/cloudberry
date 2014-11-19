@@ -22,9 +22,8 @@
     = f.label 'Описание'  
     = f.input_field :text, :class => "redactor", :rows => 40, :cols => 120
   %p
-    .catlist
-      = f.label 'Категории'
-      = f.association :categories,   as: :check_boxes, :label => false
-      -# = f.category_ids = article[category_ids][]
+    = f.label 'Категории'
+    = f.association :categories,   as: :check_boxes, :label => false
+    -# = f.category_ids = article[category_ids][]
   %p        
     = f.submit :class => 'btn btn-primary', :label => 'Создать'
