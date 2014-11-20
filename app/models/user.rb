@@ -17,10 +17,19 @@ class User < ActiveRecord::Base
   def self.send_daily_news
     User.find_each do |user|
       if user.subscriptions.present?
-        NewsMailer.delay.news_daily(user)
+        # @links = generate_links(user)
+        NewsMailer.delay.news_daily(@links)
       end
     end
   end
+
+  # def generate_links(user)
+  #   @links = []
+  #   user.subscriptions.each do |sub|
+  #     @articles = Category.find(sub.category_id).articles.created_after(1.week.ago)
+  #   end
+  #   @links << @articles
+  # end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   validates :title, presence: true,
                     length: { minimum: 5 }
   scope :published,               -> { where is_published: true }
+  scope :created_after, ->(time) { where("created_at > ?", time) }
   mount_uploader :image, ImageUploader
 
 end
