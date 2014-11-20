@@ -6237,3 +6237,589 @@ Migrating to CreateSubscriptions (20141117112012)
   [1m[35mSubscription Load (0.8ms)[0m  SELECT "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."user_id" = $1 ORDER BY "subscriptions"."id" DESC LIMIT 1  [["user_id", 21]]
   [1m[36mSubscription Load (0.6ms)[0m  [1mSELECT "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."user_id" = $1 ORDER BY "subscriptions"."id" DESC LIMIT 1[0m  [["user_id", 21]]
   [1m[35mSubscription Load (1.1ms)[0m  SELECT "subscriptions".* FROM "subscriptions" INNER JOIN "categories" ON "categories"."id" = "subscriptions"."category_id" WHERE "subscriptions"."user_id" = $1 ORDER BY "subscriptions"."id" DESC LIMIT 1  [["user_id", 21]]
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2014-11-20 19:10:58 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (16.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb (9.8ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (23.0ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (125.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-20 19:11:07 +0300
+Processing by WelcomeController#index as HTML
+  [1m[35mArticle Load (73.4ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mArticle Load (1.2ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/_head.html.haml (338.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/index.html.haml within layouts/application (409.2ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 21 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mAdminUser Load (0.9ms)[0m  [1mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = 1 ORDER BY "admin_users"."id" ASC LIMIT 1[0m
+  [1m[35mCategory Load (0.7ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (64.0ms)
+  Rendered layouts/_flash_messages.html.erb (0.5ms)
+  Rendered layouts/_footer.html.haml (14.4ms)
+Completed 200 OK in 2326ms (Views: 2110.8ms | ActiveRecord: 135.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-11-20 19:11:13 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rLKTerdooh0gLf2+xPnajU69mpU/t2Cruvj177tH8z8="}
+  [1m[36mAdminUser Load (0.6ms)[0m  [1mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = 1 ORDER BY "admin_users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 21 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (56.9ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 133ms (ActiveRecord: 58.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-20 19:11:13 +0300
+Processing by WelcomeController#index as HTML
+  [1m[35mArticle Load (0.8ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mArticle Load (0.9ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/_head.html.haml (8.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/index.html.haml within layouts/application (17.3ms)
+  [1m[35mCategory Load (0.5ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (8.3ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.3ms)
+Completed 200 OK in 55ms (Views: 51.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:11:17 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (3.1ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (186.1ms)
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (3.3ms)
+  Rendered layouts/_flash_messages.html.erb (0.0ms)
+  Rendered layouts/_footer.html.haml (0.3ms)
+Completed 200 OK in 221ms (Views: 219.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:11:52 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (26.4ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (30.9ms)
+Completed 500 Internal Server Error in 99ms
+
+ActionView::Template::Error (Illegal element: classes and ids must have values.):
+     8:       = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+     9:     .tw.auth-btn
+    10:       / = link_to "Twitter", omniauth_authorize_path(resource_name, provider)
+    11:       # = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+  app/views/devise/shared/_socialauth.haml:11
+  app/views/devise/registrations/new.html.haml:32:in `_app_views_devise_registrations_new_html_haml__3069761386055325987_2169122400'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:12:07 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (2.5ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (6.7ms)
+  [1m[35mCategory Load (0.5ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (5.3ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.7ms)
+Completed 200 OK in 114ms (Views: 112.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:12:12 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=ehmnI58vLISdRPb7d36ERjs5IY9KcJNm&oauth_verifier=n8wkdsPTS5mOcIEi6cbsQATW9MnN6SPC" for 127.0.0.1 at 2014-11-20 19:12:17 +0300
+
+AbstractController::ActionNotFound (The action 'twitter' could not be found for Users::OmniauthCallbacksController):
+  actionpack (4.0.3) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.3) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.3) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.3) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/mapper.rb:44:in `call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.3) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.3) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:404:in `call_app!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:362:in `callback_phase'
+  omniauth-oauth (1.0.1) lib/omniauth/strategies/oauth.rb:58:in `callback_phase'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:227:in `callback_call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:184:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.3) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__2384583490942811214__call__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-20 19:24:59 +0300
+Processing by WelcomeController#index as HTML
+  [1m[36mArticle Load (1.0ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'
+  [1m[36mArticle Load (0.7ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'
+  Rendered welcome/_head.html.haml (26.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'
+  Rendered welcome/index.html.haml within layouts/application (72.8ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (9.5ms)
+  Rendered layouts/_flash_messages.html.erb (0.2ms)
+  Rendered layouts/_footer.html.haml (0.6ms)
+Completed 200 OK in 351ms (Views: 295.1ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:25:04 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (2.0ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (38.5ms)
+Completed 500 Internal Server Error in 77ms
+
+ActionView::Template::Error (Illegal nesting: nesting within a tag that already has content is illegal.):
+     7:     .fb.auth-btn
+     8:       = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+     9:     / .tw.auth-btn
+    10:       / = link_to "Twitter", omniauth_authorize_path(resource_name, provider)
+    11:       / = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+  app/views/devise/shared/_socialauth.haml:10
+  app/views/devise/registrations/new.html.haml:32:in `_app_views_devise_registrations_new_html_haml__3069761386055325987_2169122400'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.6ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (27.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:25:40 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (3.1ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (9.2ms)
+  [1m[35mCategory Load (0.7ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (5.8ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.6ms)
+Completed 200 OK in 130ms (Views: 127.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:25:43 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=4FlICHuDC3eRB99DrPcZZHkzE4k3ZQUc&oauth_verifier=bM7TTE9FzEdT5VIUgJfMkky4WFWHZgzi" for 127.0.0.1 at 2014-11-20 19:25:44 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"4FlICHuDC3eRB99DrPcZZHkzE4k3ZQUc", "oauth_verifier"=>"bM7TTE9FzEdT5VIUgJfMkky4WFWHZgzi"}
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'twitter' AND "users"."uid" = '176691505' ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (15.3ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/users/sign_up
+Completed 302 Found in 119ms (ActiveRecord: 17.0ms)
+
+ActionDispatch::Cookies::CookieOverflow (ActionDispatch::Cookies::CookieOverflow):
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:455:in `[]='
+  actionpack (4.0.3) lib/action_dispatch/middleware/session/cookie_store.rb:109:in `set_cookie'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:350:in `commit_session'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:226:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.3) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__2384583490942811214__call__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (17.6ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (54.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-20 19:31:44 +0300
+Processing by WelcomeController#index as HTML
+  [1m[35mArticle Load (1.2ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mArticle Load (0.9ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/_head.html.haml (23.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/index.html.haml within layouts/application (52.5ms)
+  [1m[35mCategory Load (0.5ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (12.0ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.6ms)
+Completed 200 OK in 266ms (Views: 195.8ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:31:50 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (2.4ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (70.7ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (5.2ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.6ms)
+Completed 200 OK in 133ms (Views: 126.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:31:52 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=t22ZqMaVVX5F4IRTcs2rqr4MTowx3q8s&oauth_verifier=pvJvNCZbfIRZMuiFRU5bVAYC39kKKMBa" for 127.0.0.1 at 2014-11-20 19:31:54 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"t22ZqMaVVX5F4IRTcs2rqr4MTowx3q8s", "oauth_verifier"=>"pvJvNCZbfIRZMuiFRU5bVAYC39kKKMBa"}
+Completed 500 Internal Server Error in 2ms
+
+ArgumentError (wrong number of arguments (5 for 1)):
+  app/models/user.rb:51:in `from_omniauth'
+  app/controllers/users/omniauth_callbacks_controller.rb:17:in `twitter'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:36:19 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (1.1ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (44.0ms)
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (13.4ms)
+  Rendered layouts/_flash_messages.html.erb (0.2ms)
+  Rendered layouts/_footer.html.haml (0.9ms)
+Completed 200 OK in 177ms (Views: 142.5ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:36:22 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=D87pWTUkapZP3QXmCYA7Tg5VRgB9uhH8&oauth_verifier=BnfLXq2lR6Loj1hLV63WgnLIVNaKGRHH" for 127.0.0.1 at 2014-11-20 19:36:24 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"D87pWTUkapZP3QXmCYA7Tg5VRgB9uhH8", "oauth_verifier"=>"BnfLXq2lR6Loj1hLV63WgnLIVNaKGRHH"}
+Completed 500 Internal Server Error in 2ms
+
+ArgumentError (wrong number of arguments (5 for 1)):
+  app/models/user.rb:51:in `from_omniauth'
+  app/controllers/users/omniauth_callbacks_controller.rb:17:in `twitter'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.9ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:37:40 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (0.9ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (32.7ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (11.5ms)
+  Rendered layouts/_flash_messages.html.erb (0.2ms)
+  Rendered layouts/_footer.html.haml (0.7ms)
+Completed 200 OK in 167ms (Views: 135.1ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:37:42 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=ytOYq2U2AVAtIFa2TUsJCOOqFMAi0xnK&oauth_verifier=vJqHp2NI07AOuA9TDq0pvyJp3OAtabvY" for 127.0.0.1 at 2014-11-20 19:37:44 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"ytOYq2U2AVAtIFa2TUsJCOOqFMAi0xnK", "oauth_verifier"=>"vJqHp2NI07AOuA9TDq0pvyJp3OAtabvY"}
+Completed 500 Internal Server Error in 1ms
+
+NameError (undefined local variable or method `auth' for #<Class:0x0000010159edc0>):
+  app/models/user.rb:52:in `from_omniauth'
+  app/controllers/users/omniauth_callbacks_controller.rb:17:in `twitter'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:38:26 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (1.3ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (33.3ms)
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (9.3ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (1.0ms)
+Completed 200 OK in 201ms (Views: 166.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:38:28 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=pk2lSUgPfy5y0A6GAyjvzXnlH0laXwvK&oauth_verifier=pyqM3e9cD3LeKoyAu0kS9jLEnQd5fyVN" for 127.0.0.1 at 2014-11-20 19:38:30 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"pk2lSUgPfy5y0A6GAyjvzXnlH0laXwvK", "oauth_verifier"=>"pyqM3e9cD3LeKoyAu0kS9jLEnQd5fyVN"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'twitter' AND "users"."uid" = '176691505' ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 4ms
+
+NameError (undefined local variable or method `auth' for #<Class:0x0000010163e118>):
+  app/models/user.rb:53:in `block in from_omniauth'
+  app/models/user.rb:52:in `from_omniauth'
+  app/controllers/users/omniauth_callbacks_controller.rb:17:in `twitter'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:39:01 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (1.8ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (34.1ms)
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (9.6ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (2.0ms)
+Completed 200 OK in 181ms (Views: 135.3ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:39:04 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=Z0XByxDaW63Y7EtJUz2PKiJjHWo86L9k&oauth_verifier=Rx8dYy19HpmFcv5I7vyVAfUxycqtVXdZ" for 127.0.0.1 at 2014-11-20 19:39:06 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"Z0XByxDaW63Y7EtJUz2PKiJjHWo86L9k", "oauth_verifier"=>"Rx8dYy19HpmFcv5I7vyVAfUxycqtVXdZ"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'twitter' AND "users"."uid" = '176691505' ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/users/sign_up
+Completed 302 Found in 78ms (ActiveRecord: 1.2ms)
+
+ActionDispatch::Cookies::CookieOverflow (ActionDispatch::Cookies::CookieOverflow):
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:455:in `[]='
+  actionpack (4.0.3) lib/action_dispatch/middleware/session/cookie_store.rb:109:in `set_cookie'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:350:in `commit_session'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:226:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.3) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:373:in `_run__2384583490942811214__call__callbacks'
+  activesupport (4.0.3) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.3) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.0.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.3) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.3) lib/rails/engine.rb:511:in `call'
+  railties (4.0.3) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/katya/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.1ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (51.2ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:49:47 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=qewqVR8lZ7aAnt8VU70ZM6tY8uvP8Cwz&oauth_verifier=IFLjpkQc9Acb8xknhOsWi6ls145mEFlj" for 127.0.0.1 at 2014-11-20 19:49:50 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"qewqVR8lZ7aAnt8VU70ZM6tY8uvP8Cwz", "oauth_verifier"=>"IFLjpkQc9Acb8xknhOsWi6ls145mEFlj"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'twitter' AND "users"."uid" = '176691505' ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+Redirected to http://localhost:3000/users/sign_up
+Completed 302 Found in 123ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:49:51 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (1.5ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (22.2ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (11.3ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (1.0ms)
+Completed 200 OK in 136ms (Views: 130.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:49:55 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (1.3ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (6.6ms)
+  [1m[35mCategory Load (0.5ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (4.8ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.6ms)
+Completed 200 OK in 58ms (Views: 55.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2014-11-20 19:49:57 +0300
+
+
+Started GET "/users/auth/twitter/callback?oauth_token=275IAFIhgO1yGHQR22tO2D8if58ORIYq&oauth_verifier=JOdgxuAmJPDviQIgoi5KBzbCwNR8Tkfq" for 127.0.0.1 at 2014-11-20 19:49:58 +0300
+Processing by Users::OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"275IAFIhgO1yGHQR22tO2D8if58ORIYq", "oauth_verifier"=>"JOdgxuAmJPDviQIgoi5KBzbCwNR8Tkfq"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'twitter' AND "users"."uid" = '176691505' ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/users/sign_up
+Completed 302 Found in 78ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-11-20 19:50:00 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (1.1ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (5.4ms)
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (5.7ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.8ms)
+Completed 200 OK in 41ms (Views: 39.9ms | ActiveRecord: 0.4ms)

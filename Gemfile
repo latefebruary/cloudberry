@@ -9,6 +9,7 @@ gem 'redis-rails'
 # gem 'redis'
 gem 'ancestry'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
