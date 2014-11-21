@@ -4,7 +4,7 @@ Project::Application.routes.draw do
   ActiveAdmin.routes(self)
   # mount RedactorRails::Engine => '/redactor_rails'
   # devise_for :admins
-
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   post 'persons', to: 'persons#create'
@@ -18,6 +18,8 @@ Project::Application.routes.draw do
 
   post 'persons', to: 'persons#subscribe_notifications'
   get 'welcome/index', to: 'persons#unsubscribe_notifications'
+
+  get 'add_email', to: 'persons#add_email'
   
   # post 'welcome/index', to: 'persons#subscribe'
   # post 'persons', to: 'persons#unsubscribe'

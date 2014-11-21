@@ -3,6 +3,8 @@
 
   .h4
     или
-  - resource_class.omniauth_providers.each do |provider|
-    .fb.auth-btn
-      = link_to "#{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+
+  .fb.auth-btn
+    = link_to "Facebook", user_omniauth_authorize_path(:facebook)
+  .tw.auth-btn
+    = link_to "Twitter", user_omniauth_authorize_path(:twitter)

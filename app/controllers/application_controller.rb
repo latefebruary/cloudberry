@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action { @categories = Category.all } 
+  before_action :access_to_categories  
 
   def after_sign_in_path_for(resource)
   	root_path
@@ -13,8 +13,11 @@ class ApplicationController < ActionController::Base
   	request.referrer
   end
 
-
   protected
+
+  def access_to_categories
+    @categories = Category.all
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name

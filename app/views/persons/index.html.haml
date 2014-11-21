@@ -1,21 +1,30 @@
-%section.container
+.wc-cont
   .profile
     %h2 
       Профиль 
 
-    = simple_form_for(@user, url: persons_update_path, html: { method: :put, class: "ordinary" }) do |f|
-      .form-inputs
-        = f.label 'Ваш емейл'
-        = f.input :email, placeholder: "user@domain.com", required: true, label: false
-        = f.label 'Ваше имя'
-        = f.input :name, placeholder: "John Black", label: false
-      .checkbox
-        = f.input :mail_notifyers, label: 'Получать уведомления по почте', as: :boolean
-        / = f.input :mail_notifyers, type: "checkbox", checked_value: true, unchecked_value: false, label: false
-      / .input-container
-      = link_to "Изменить пароль", persons_password_path
-      .form-actions
-        = f.button :submit, "Сохранить", class: "btn btn-submit"
+    .login-form
+      = form_for(@user, url: persons_update_path, html: { method: :put }, class: 'form-horizontal') do |f|
+        .form-group
+          = f.label 'Ваш емейл'
+          = f.email_field :email, placeholder: "user@domain.com", required: true, label: false, class: 'form-control'
+        .form-group
+          = f.label 'Ваше имя'
+          = f.text_field :name, placeholder: "John Black", label: false, class: 'form-control'
+        .form-group
+          .col-sm-12
+            .checkbox
+              = f.check_box :mail_notifyers, label: false, as: :boolean
+              = f.label 'Получать уведомления по почте'
+        .form-actions
+          = f.submit "Сохранить", class: "btn btn-submit"
+
+        .extramargin= link_to "Изменить пароль", persons_password_path
+
+    .warningg
+      -if @user.email.include? 'm98v5dfg'
+        %p
+          Ваши емейл и пароль были сгенерированы автоматически. Если вы хотите иметь возможность авторизоваться обычным способом, поменяйте емейл и пароль на свои. Для авторизации через Твиттер оставьте настройки по умолчанию.
 
     .subscribtion_profile
       %h2
@@ -34,7 +43,5 @@
                     &times;
                   %span{class: 'sr-only'}
                     Удалить
-
-        %p
-          / = button_to 'Отписаться от всех', persons_path, action: 'unsubscribe', class: 'btn btn-submit'
-                  
+      - else
+        Вы не подписаны ни на одну категорию
