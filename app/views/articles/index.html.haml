@@ -4,16 +4,14 @@
     = @category.name
 
   - if @articles.present?
-    %table.table
-      %tr
-        %th Заголовок
-        %th Анонс
-        %th Содержание
-      - @articles.each do |article| 
-        %tr
-          %td= article.title
-          %td= article.anonce 
-          %td= link_to 'Show', article_path(article)
+    -@articles.order(created_at: :asc).each do |article|
+      .cubebox
+        .cubeimg
+          = image_tag article.image
+        %a.cubelink{ :href => article_path(article.id) }
+          %h4= article.title
+        .cubelink
+          = article.anonce
   - else
     %p
       В данной категории статей нет

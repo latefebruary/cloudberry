@@ -1,10 +1,14 @@
 .row-cont
   
   %h2= @article.title
+  .article-author
+    = @article.created_at.strftime("%a, %e %b %Y %H:%M")
+    by 
+    = @article.user.name
   
   .articlebody
-    %center= image_tag @article.image
-    = @article.text.html_safe
+    .image= image_tag @article.image
+    .text= @article.text.html_safe
   
   - if @article.categories.any?
     %ul.inline
