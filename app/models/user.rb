@@ -14,22 +14,26 @@ class User < ActiveRecord::Base
   after_create { UserMailer.welcome_email(self).deliver }
 
 
-  def self.send_daily_news
+  def self.send_weekly_news
     User.find_each do |user|
       if user.subscriptions.present?
-        # @links = generate_links(user)
-        NewsMailer.delay.news_daily(@links)
+        @ids = user.articles_ids
+        NewsMailer.delay.weekly_news(user, @ids)
       end
     end
   end
 
-  # def generate_links(user)
-  #   @links = []
-  #   user.subscriptions.each do |sub|
-  #     @articles = Category.find(sub.category_id).articles.created_after(1.week.ago)
-  #   end
-  #   @links << @articles
-  # end
+  # User object methods
+  def articles_ids
+    @ids = []
+    subscriptions.each do |sub|
+      sub.category.articles.created_after(1.week.ago).each do |article|
+        @ids << article.id 
+      end
+    end
+    @ids.uniq! unless @ids.nil?
+    return @ids
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -43,7 +47,7 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.email = auth.uid + "@m98v5dfg.ru" # Пока я не разберусь, как сделать нормально, царь-костыль
+      user.email = auth.uid + "@m98v5dfg.ru" # email creates kinda messy here
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
       # user.password = Devise.friendly_token[0,20]

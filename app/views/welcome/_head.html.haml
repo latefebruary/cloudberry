@@ -1,7 +1,7 @@
 .news
   .wc-cont
-    - if @articles.published.present?
-      - @articles.order(created_at: :asc).last(8).each do |r|
+    - if @fresh_articles.present?
+      - @fresh_articles.order(created_at: :desc).first(8).each do |r|
         %a.postbox{ :href => article_path(r.id) }
           .posttime= r.created_at.strftime("%H:%M")
           .postlink

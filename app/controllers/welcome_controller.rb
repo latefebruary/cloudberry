@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
-    @articles = Article.where(:is_published => true).paginate(:page => params[:page], per_page: 9).order('id DESC')
+    @articles = Article.published.paginate(:page => params[:page], per_page: 9).order('id DESC')
+    @fresh_articles = Article.published
   end
 
   def show

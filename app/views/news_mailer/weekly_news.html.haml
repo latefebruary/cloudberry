@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+
+  %body
+
+    %h3
+      Новое за неделю 
+
+    - @ids.each do |id|
+      %h4= Article.find(id).title
+      %p
+        = Article.find(id).anonce
+      %p
+        = Article.find(id).updated_at
+      %p
+        - Article.find(id).categories.each do |cat|
+          = cat.name
+      %p
+        = link_to 'read', article_url(Article.find(id))
+
+    %p
+      Чтобы отписаться от рассылки, нажмите
+      = link_to 'Отписаться', unsubscribe_url( user_token: @user.user_token )

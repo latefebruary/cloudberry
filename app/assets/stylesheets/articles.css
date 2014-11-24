@@ -75,3 +75,11 @@
   font-family: "PT Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   margin-bottom: 15px;
 }
+
+/*----------Article Show----------*/
+
+.row-cont-edit {
+  margin: 0 auto;
+  max-width: 920px;
+  padding: 20px 0px;
+}
