@@ -16025,3 +16025,86 @@ Processing by ArticlesController#new as HTML
   Rendered layouts/_flash_messages.html.erb (0.1ms)
   Rendered layouts/_footer.html.haml (0.7ms)
 Completed 200 OK in 223ms (Views: 220.1ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-11-25 15:58:01 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"q5wJpFKuZzSJfw4zJMyUG0030eULtwlyuA40MJNDDAQ="}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 25 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36m (15.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/articles/new
+Completed 302 Found in 93ms (ActiveRecord: 17.0ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2014-11-25 15:58:01 +0300
+Processing by ArticlesController#new as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-11-25 15:58:01 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (3.1ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (82.6ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (5.1ms)
+  Rendered layouts/_flash_messages.html.erb (0.2ms)
+  Rendered layouts/_footer.html.haml (0.7ms)
+Completed 200 OK in 296ms (Views: 294.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/articles?id=5" for 127.0.0.1 at 2014-11-25 16:08:38 +0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mCategory Load (0.7ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT 1  [["id", "5"]]
+  [1m[36mArticle Load (42.4ms)[0m  [1mSELECT "articles".* FROM "articles" INNER JOIN "articles_categories" ON "articles"."id" = "articles_categories"."article_id" WHERE "articles_categories"."category_id" = $1 AND "articles"."is_published" = 't'[0m  [["category_id", 5]]
+  [1m[35mArticle Load (1.4ms)[0m  SELECT "articles".* FROM "articles" INNER JOIN "articles_categories" ON "articles"."id" = "articles_categories"."article_id" WHERE "articles_categories"."category_id" = $1 AND "articles"."is_published" = 't' ORDER BY "articles"."created_at" ASC  [["category_id", 5]]
+  Rendered articles/index.html.haml within layouts/application (52.8ms)
+Completed 500 Internal Server Error in 218ms
+
+ActionView::Template::Error (undefined method `subscriptions' for nil:NilClass):
+    17:       В данной категории статей нет
+    18: 
+    19:   .subscribe-index
+    20:     - if current_user.subscriptions.find_by_category_id(@category.id.to_s).blank?
+    21:       
+    22:       %h4
+    23:         Подписаться на новости
+  app/views/articles/index.html.haml:20:in `_app_views_articles_index_html_haml___539206625229986449_2239688260'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (60.1ms)
+
+
+Started GET "/articles?id=5" for 127.0.0.1 at 2014-11-25 16:36:25 +0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", "5"]]
+  [1m[35mArticle Load (0.9ms)[0m  SELECT "articles".* FROM "articles" INNER JOIN "articles_categories" ON "articles"."id" = "articles_categories"."article_id" WHERE "articles_categories"."category_id" = $1 AND "articles"."is_published" = 't'  [["category_id", 5]]
+  [1m[36mArticle Load (0.7ms)[0m  [1mSELECT "articles".* FROM "articles" INNER JOIN "articles_categories" ON "articles"."id" = "articles_categories"."article_id" WHERE "articles_categories"."category_id" = $1 AND "articles"."is_published" = 't' ORDER BY "articles"."created_at" ASC[0m  [["category_id", 5]]
+  Rendered articles/index.html.haml within layouts/application (10.3ms)
+  [1m[35mCategory Load (0.6ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (4.5ms)
+  Rendered layouts/_flash_messages.html.erb (0.2ms)
+  Rendered layouts/_footer.html.haml (0.8ms)
+Completed 200 OK in 130ms (Views: 124.9ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/subscriptions?id=5" for 127.0.0.1 at 2014-11-25 16:36:28 +0300
+Processing by SubscriptionsController#create as HTML
+  Parameters: {"authenticity_token"=>"yLtG6b9d/OFJckcrnaeUBoQ3A2NmWWxvBhTZ8QXv1oQ=", "id"=>"5"}
+Completed 401 Unauthorized in 2ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-11-25 16:36:28 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_socialauth.haml (1.0ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (17.9ms)
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (3.4ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.9ms)
+Completed 200 OK in 61ms (Views: 58.8ms | ActiveRecord: 0.4ms)
