@@ -17,10 +17,8 @@
       В данной категории статей нет
 
   .subscribe-index
-    - if current_user.subscriptions.find_by_category_id(@category.id.to_s).blank?
-      
-      %h4
-        Подписаться на новости
-        = @category.name
-      
-      = button_to 'Подписаться', subscriptions_path(id: @category.id), class: 'podpisatca'
+    %h4
+      Подписаться на новости
+      = @category.name
+    
+    = button_to 'Подписаться', subscriptions_path(id: @category.id), class: 'podpisatca'

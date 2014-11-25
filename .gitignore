@@ -10,7 +10,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /log/*.pid
-
+/tmp
 
 /public/files/analyzer.json
 
