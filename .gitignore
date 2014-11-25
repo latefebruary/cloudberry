@@ -1,0 +1,25 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore uploads
+/public/system/contents/*
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/log/*.pid
+/tmp
+
+/public/files/analyzer.json
+
+/.idea
+
+# MacOS files
+.DS_Store
+app/.DS_Store
+app/assets/.DS_Store
+app/assets/images/.DS_Store
+
+/public/uploads

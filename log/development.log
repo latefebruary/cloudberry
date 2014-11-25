@@ -15916,3 +15916,112 @@ Pgo8L2h0bWw+Cg==
 
 ----==_mimepart_547344fbe3ef0_51578082dbf8802f4--
 
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-25 15:03:06 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (75.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mArticle Load (79.7ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't'
+  [1m[36mArticle Load (19.9ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY "articles"."created_at" DESC LIMIT 8[0m
+  Rendered welcome/_head.html.haml (254.1ms)
+  [1m[35mArticle Load (13.3ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mArticle Load (0.9ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/index.html.haml within layouts/application (342.7ms)
+  [1m[35mUser Load (19.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 25 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCategory Load (6.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (77.5ms)
+  Rendered layouts/_flash_messages.html.erb (0.8ms)
+  Rendered layouts/_footer.html.haml (14.0ms)
+Completed 200 OK in 1617ms (Views: 1344.8ms | ActiveRecord: 223.8ms)
+
+
+Started GET "/articles?id=3" for 127.0.0.1 at 2014-11-25 15:03:18 +0300
+Processing by ArticlesController#index as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCategory Load (72.9ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT 1  [["id", "3"]]
+  [1m[36mArticle Load (39.2ms)[0m  [1mSELECT "articles".* FROM "articles" INNER JOIN "articles_categories" ON "articles"."id" = "articles_categories"."article_id" WHERE "articles_categories"."category_id" = $1 AND "articles"."is_published" = 't'[0m  [["category_id", 3]]
+  [1m[35mArticle Load (1.6ms)[0m  SELECT "articles".* FROM "articles" INNER JOIN "articles_categories" ON "articles"."id" = "articles_categories"."article_id" WHERE "articles_categories"."category_id" = $1 AND "articles"."is_published" = 't' ORDER BY "articles"."created_at" ASC  [["category_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 25 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSubscription Load (31.1ms)[0m  SELECT "subscriptions".* FROM "subscriptions" WHERE "subscriptions"."user_id" = $1 AND "subscriptions"."category_id" = 3 LIMIT 1  [["user_id", 25]]
+  Rendered articles/index.html.haml within layouts/application (119.9ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (5.7ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.6ms)
+Completed 200 OK in 740ms (Views: 267.9ms | ActiveRecord: 207.4ms)
+
+
+Started GET "/articles/14" for 127.0.0.1 at 2014-11-25 15:04:39 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mArticle Load (0.7ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1  [["id", "14"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 25 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 18]]
+  Rendered articles/show.html.haml within layouts/application (42.1ms)
+Completed 500 Internal Server Error in 67ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    4:   .article-author
+    5:     = @article.created_at.strftime("%a, %e %b %Y %H:%M")
+    6:     by 
+    7:     = @article.user.name
+    8:   
+    9:   .articlebody
+   10:     .image= image_tag @article.image
+  app/views/articles/show.html.haml:7:in `_app_views_articles_show_html_haml__2156124254270885843_2163653580'
+
+
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /Users/katya/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (27.9ms)
+
+
+Started GET "/articles/14" for 127.0.0.1 at 2014-11-25 15:09:12 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT 1[0m  [["id", "14"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 25 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 18]]
+  [1m[35mCategory Exists (16.7ms)[0m  SELECT 1 AS one FROM "categories" INNER JOIN "articles_categories" ON "categories"."id" = "articles_categories"."category_id" WHERE "articles_categories"."article_id" = $1 LIMIT 1  [["article_id", 14]]
+  [1m[36mCategory Load (35.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "articles_categories" ON "categories"."id" = "articles_categories"."category_id" WHERE "articles_categories"."article_id" = $1[0m  [["article_id", 14]]
+  [1m[35mComment Load (35.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = $1  [["article_id", 14]]
+  Rendered comments/_form.html.haml (820.3ms)
+  Rendered articles/show.html.haml within layouts/application (1007.7ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (4.6ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.4ms)
+Completed 200 OK in 1123ms (Views: 999.8ms | ActiveRecord: 120.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-25 15:13:05 +0300
+Processing by WelcomeController#index as HTML
+  [1m[35mArticle Load (1.5ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't'
+  [1m[36mArticle Load (0.8ms)[0m  [1mSELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY "articles"."created_at" DESC LIMIT 8[0m
+  Rendered welcome/_head.html.haml (8.0ms)
+  [1m[35mArticle Load (0.8ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC LIMIT 9 OFFSET 0
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  [1m[35mArticle Load (0.7ms)[0m  SELECT "articles".* FROM "articles" WHERE "articles"."is_published" = 't' ORDER BY id DESC, "articles"."created_at" ASC LIMIT 9 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "articles" WHERE "articles"."is_published" = 't'[0m
+  Rendered welcome/index.html.haml within layouts/application (32.9ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 25 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.haml (7.1ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.7ms)
+Completed 200 OK in 178ms (Views: 171.3ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2014-11-25 15:13:19 +0300
+Processing by ArticlesController#new as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 25 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered articles/_form.html.haml (84.8ms)
+  Rendered articles/new.html.haml within layouts/application (113.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.haml (4.9ms)
+  Rendered layouts/_flash_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.haml (0.7ms)
+Completed 200 OK in 223ms (Views: 220.1ms | ActiveRecord: 1.1ms)

@@ -3,8 +3,9 @@
   %h2= @article.title
   .article-author
     = @article.created_at.strftime("%a, %e %b %Y %H:%M")
-    by 
-    = @article.user.name
+    - if @article.user.present?
+      by 
+      = @article.user.name
   
   .articlebody
     .image= image_tag @article.image
