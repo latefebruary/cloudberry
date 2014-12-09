@@ -27,7 +27,7 @@ Project::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  # config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :sendmail
   # Defaults to:
   # config.action_mailer.sendmail_settings = {
   #   location: '/usr/sbin/sendmail',
@@ -35,11 +35,21 @@ Project::Application.configure do
   # }
   # ENV["REDISTOGO_URL"] = 'redis://localhost:6789' 
   
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = false
 
-  config.action_mailer.default_options = { from: 'test@mkechinov.ru' }
+  config.action_mailer.default_options = { from: 'no-reply@example.com' }
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                 587,
+  #   domain:               'gmail.com',
+  #   user_name:            'test@mkechinov.ru',
+  #   password:             '976431976431',
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true  }
 
   # config.action_mailer.smtp_settings = { address: "localhost", port: 3000 }
   # config.action_mailer.smtp_settings = {

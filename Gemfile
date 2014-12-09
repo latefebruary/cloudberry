@@ -51,6 +51,7 @@ gem "mini_magick"
 
 # Cron-job scheduler
 gem 'sidekiq'
+# gem 'sidekiq_mailer'
 # gem 'sidekiq-client-cli' #to run sidekiq with whenever
 # gem 'sidekiq-middleware' #handle locks
 

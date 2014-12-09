@@ -14,7 +14,7 @@
         .form-group
           .col-sm-12
             .checkbox
-              = f.check_box :mail_notifyers, label: false, as: :boolean
+              = f.check_box :notifications, label: false, as: :boolean
               = f.label 'Получать уведомления по почте'
         .form-actions
           = f.submit "Сохранить", class: "btn btn-submit"

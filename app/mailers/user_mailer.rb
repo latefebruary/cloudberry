@@ -8,15 +8,19 @@ class UserMailer < ActionMailer::Base
   end
 
   def article_was_approved(article_id)
-    @article = Article.find(article_id)
-    @user = @article.user
-    mail(to: @user.email, subject: 'Your article was approved') if @user.mail_notifyers == true
+    if @user.notifications == true
+      @article = Article.find(article_id)
+      @user = @article.user
+      mail(to: @user.email, subject: 'Your article was approved') 
+    end
   end
 
   def article_was_declined(article_id)
-    @article = Article.find(article_id)
-    @user = @article.user
-    mail(to: @user.email, subject: 'Your article was declined') if @user.mail_notifyers == true
+    if @user.notifications == true
+      @article = Article.find(article_id)
+      @user = @article.user
+      mail(to: @user.email, subject: 'Your article was declined') 
+    end
   end
 
 end

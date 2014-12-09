@@ -19,10 +19,17 @@
 
 # Learn more: http://github.com/javan/whenever
 
-# require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 # set :path, Rails.root
 # set :output, Rails.root.join('log', 'cron.log')
+set :environment, "development"
+set :output, 'log/cron.log'
 
-# every 1.week, :at => '9:00 am' do
-#   runner "User.send_daily_news"
-# end
+every :tuesday, :at => '12:56 am' do
+  runner "User.send_weekly_news"
+end
+
+every :monday, :at => '8:05 pm' do
+  runner "User.send_weekly_news"
+end

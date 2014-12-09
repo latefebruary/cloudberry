@@ -17,8 +17,7 @@ class User < ActiveRecord::Base
   def self.send_weekly_news
     User.find_each do |user|
       if user.subscriptions.present?
-        @ids = user.articles_ids
-        NewsMailer.delay.weekly_news(user, @ids)
+        MailWorker.perform_async(user.id)
       end
     end
   end
@@ -69,6 +68,7 @@ class User < ActiveRecord::Base
       self.user_token = generate_authentication_token
     end
   end
+  
 
   private
 
