@@ -24,7 +24,7 @@ Project::Application.routes.draw do
   # post 'welcome/index', to: 'persons#subscribe'
   # post 'persons', to: 'persons#unsubscribe'
 
-  # get "welcome/index"
+  get "articles/preview", to: 'articles#preview'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -41,6 +41,7 @@ Project::Application.routes.draw do
   # Основной ресурс:
     resources :articles do
       resources :comments
+      # get :preview
     end
 
     resources :comments do

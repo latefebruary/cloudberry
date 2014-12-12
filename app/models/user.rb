@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
     @ids = []
     subscriptions.each do |sub|
       sub.category.articles.created_after(1.week.ago).each do |article|
-        @ids << article.id 
+        if !(sub.user == article.user)
+          @ids << article.id 
+        end
       end
     end
     @ids.uniq! unless @ids.nil?

@@ -1,7 +1,8 @@
 .row-cont
-  %h3
-    Статьи в категории 
-    = @category.name
+  - if @category.present?
+    %h3
+      Статьи в категории 
+      = @category.name
 
   - if @articles.present?
     -@articles.order(created_at: :asc).each do |article|
@@ -16,9 +17,15 @@
     %p
       В данной категории статей нет
 
-  .subscribe-index
-    %h4
-      Подписаться на новости
-      = @category.name
+  - if @category.present?
+    .subscribe-index
+      %h4
+        Подписаться на новости
+        = @category.name
+      
+      = button_to 'Подписаться', subscriptions_path(id: @category.id), class: 'podpisatca'
+
+  .wpagination
+    %span
     
-    = button_to 'Подписаться', subscriptions_path(id: @category.id), class: 'podpisatca'
+    / =link_to 'На главную', welcome_index_path

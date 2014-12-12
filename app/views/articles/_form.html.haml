@@ -1,4 +1,4 @@
-= simple_form_for @article do |f|
+= simple_form_for @article, :class => 'form-horizontal', :role => 'form' do |f|
   - if @article.errors.any?
     #error_explanation
 
@@ -9,21 +9,24 @@
       - @article.errors.full_messages.each do |msg|
         %li= msg
 
-  %p
-    = f.label 'Название'
-    = f.input :title, :label => false
-  %p
-    = f.label 'Анонс'
-    = f.input :anonce, :label => false
-  %p
-    = f.label 'Картинка'
-    = f.input :image, as: :file, :label => false
-  %p
-    = f.label 'Описание'  
-    = f.input_field :text, :class => "redactor", :rows => 40, :cols => 120
-  %p
-    = f.label 'Категории'
-    = f.association :categories,   as: :check_boxes, :label => false
+  .control-group
+    = f.label 'Название', class: 'col-sm-2 control-label'
+    .controls.col-sm-10.col-sm-10= f.input :title, :label => false
+  .control-group
+    = f.label 'Анонс', class: 'col-sm-2 control-label'
+    .controls.col-sm-10= f.input :anonce, :label => false
+  .control-group
+    = f.label 'Картинка', class: 'col-sm-2 control-label'
+    .controls.col-sm-10= f.input :image, as: :file, :label => false
+  .control-group
+    = f.label 'Описание'  , class: 'col-sm-2 control-label'
+    .controls.col-sm-10= f.input_field :text, :class => "redactor"
+  .control-group
+    = f.label 'Категории', class: 'col-sm-2 control-label'
+    .controls.col-sm-10= f.association :categories,   as: :check_boxes, :label => false
     -# = f.category_ids = article[category_ids][]
-  %p        
-    = f.submit :class => 'btn btn-primary', :label => 'Создать'
+  .control-group
+    = f.submit 'Сохранить', class: 'btn btn-primary', name: 'create'
+  
+    = f.submit 'Предпросмотр', class: 'btn btn-default', name: 'preview'
+

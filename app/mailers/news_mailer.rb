@@ -4,8 +4,8 @@ class NewsMailer < ActionMailer::Base
   def weekly_news(user, ids)
     @user = user
     @ids = ids
-    p '!!!!!!!!!!!!!!'
-    p 'mail sends correctly'
+    # p '!!!!!!!!!!!!!!'
+    # p 'mail sends correctly'
     mail(to: @user.email, subject: 'News weekly')
   end
 

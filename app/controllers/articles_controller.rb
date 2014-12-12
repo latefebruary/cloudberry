@@ -5,30 +5,40 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def preview
+    @article = Article.find(params[:id])
+  end
+
   def show
     @article = Article.find(params[:id])
     @user = current_user
   end
 
   def index
-    @category = Category.find(params[:id])
-    @articles = @category.articles.published
+    if params[:id].present?
+      @category = Category.find(params[:id])
+      @articles = @category.articles.published
+    else
+      @articles = Article.all.published
+    end
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user_id = current_user.id
+    @article = current_user.articles.new(article_params)
     @article.categories = Category.find(params[:article][:category_ids].reject!(&:blank?))
-
     if @article.save
-      redirect_to @article
+      if params[:preview]
+        redirect_to articles_preview_path(id: @article.id)
+      else
+        redirect_to @article
+      end
     else
       render 'new'
     end
   end
 
   def edit
-      @article = Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def update
@@ -36,7 +46,11 @@ class ArticlesController < ApplicationController
     @article.categories = Category.find(params[:article][:category_ids].reject!(&:blank?))
  
   	if @article.update(article_params)
-    	redirect_to @article
+      if params[:preview]
+        redirect_to articles_preview_path(id: @article.id)
+      else
+    	 redirect_to @article
+      end
   	else
     	render 'edit'
   	end
@@ -53,6 +67,6 @@ class ArticlesController < ApplicationController
  
 private
 	def article_params
-    	params.require(:article).permit(:title, :text, :anonce, :image)
+    	params.require(:article).permit(:title, :text, :anonce, :image, :preview, :id)
 	end
 end

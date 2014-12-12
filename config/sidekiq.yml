@@ -3,9 +3,5 @@
 :pidfile: tmp/pids/sidekiq.pid
 environment:
   :concurrency: 5
-# :timeout: 5
 :queues:
   - default
-  # - [first, 1]
-#  - [second, 20]
-#  - [third, 1]
